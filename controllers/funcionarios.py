@@ -6,6 +6,11 @@ def index():
         Exibindo todos os funcionarios 
         cadastrados no sistema
     """
+    class Virtual(object):
+        @virtualsettings(label=T('Edit'))
+        def edit(self):
+            return ''
+
     # Consultando todos os funcionarios cadastrados
     # no sistema
     query = db.auth_user.id > 0
@@ -20,8 +25,12 @@ def index():
     table.columns = ['auth_user.name','auth_user.username','auth_user.telefone','auth_user.email']
     table.headers = 'labels'
     table.showkeycolumn = False
-    table.extrajs = dict(details={
-                    'detailscolumns':'auth_user.name,auth_user.username,auth_user.telefone,auth_user.email'})
+    table.dtfeatures['sScrollY'] = '200'
+    table.dtfeatures['sScrollX'] = '100%'    
+    table.truncate = 120
+    table.extra = dict(details={
+                    'detailscolumns':'auth_user.id,auth_user.name,auth_user.username,auth_user.telefone,auth_user.email'})
+    table.virtualfields = Virtual()
     
     # Caso nao existir nenhum funcionario,
     # mostra a mensagem de erro.
@@ -51,19 +60,22 @@ def editar():
     return dict(form = crud.update(db.auth_user, id))
 
 @auth.requires_login()
-def detalhes():
+def show():
     """
         Exibe os detalhes do funcionario
         selecionado
     """
     # recupera o primeiro argumento ou redireciona
-    id = request.args(0) or redirect(URL('index'))
+    id = request.args(1) or redirect(URL('index'))
     
     # consulta os dados do funcionario selecionado
     query = db.auth_user.id == id
     
     funcionario= db(query).select().first()
     
+    # Exibindo na view
+    response.view = 'funcionarios/detalhes.html'
+
     return dict(funcionario = funcionario)
 
 @auth.requires_login()
