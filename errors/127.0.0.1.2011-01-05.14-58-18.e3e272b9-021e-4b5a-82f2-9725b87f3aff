@@ -1,0 +1,415 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\applications\\marcado/controllers/default.py'
+p4
+sS'code'
+p5
+S'# -*- coding: utf-8 -*- \n\n#########################################################################\n## This is a samples controller\n## - index is the default action of any application\n## - user is required for authentication and authorization\n## - download is for downloading files uploaded in the db (does streaming)\n## - call exposes all registered services (none by default)\n#########################################################################\n\ndef index():\n    """\n    exposes:\n    http://..../[app]/default/user/login \n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    """\n    if \'auth\' in globals():\n        # Verifica se o usuario esta logado\n        login = auth()\n        if auth.is_logged_in():\n            redirect(URL(request.application, \'clientes\',\'index\'))\n        else:\n            return dict(form=auth())\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login \n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    """\n    \n    # Captura o argumento\n    arg = request.arg(0)\n    \n    if arg == "logout":\n        response.flash = T(\'Usu\xc3\xa1rio desconectado.\')\n    \n    return dict(form=auth())\n\nresponse._vars=response._caller(user)\n'
+p6
+sS'snapshot'
+p7
+(dp8
+S'exception'
+p9
+(dp10
+S'__hash__'
+p11
+S"<method-wrapper '__hash__' of exceptions.TypeError object at 0x03BD5300>"
+p12
+sS'__setattr__'
+p13
+S"<method-wrapper '__setattr__' of exceptions.TypeError object at 0x03BD5300>"
+p14
+sS'__reduce_ex__'
+p15
+S'<built-in method __reduce_ex__ of exceptions.TypeError object at 0x03BD5300>'
+p16
+sS'__getslice__'
+p17
+S"<method-wrapper '__getslice__' of exceptions.TypeError object at 0x03BD5300>"
+p18
+sS'__getitem__'
+p19
+S"<method-wrapper '__getitem__' of exceptions.TypeError object at 0x03BD5300>"
+p20
+sS'__setstate__'
+p21
+S'<built-in method __setstate__ of exceptions.TypeError object at 0x03BD5300>'
+p22
+sS'__reduce__'
+p23
+S'<built-in method __reduce__ of exceptions.TypeError object at 0x03BD5300>'
+p24
+sS'__str__'
+p25
+S"<method-wrapper '__str__' of exceptions.TypeError object at 0x03BD5300>"
+p26
+sS'args'
+p27
+S'("\'NoneType\' object is not callable",)'
+p28
+sS'__getattribute__'
+p29
+S"<method-wrapper '__getattribute__' of exceptions.TypeError object at 0x03BD5300>"
+p30
+sS'__class__'
+p31
+S"<type 'exceptions.TypeError'>"
+p32
+sS'__delattr__'
+p33
+S"<method-wrapper '__delattr__' of exceptions.TypeError object at 0x03BD5300>"
+p34
+sS'__repr__'
+p35
+S"<method-wrapper '__repr__' of exceptions.TypeError object at 0x03BD5300>"
+p36
+sS'__dict__'
+p37
+S'{}'
+p38
+sS'__doc__'
+p39
+S"'Inappropriate argument type.'"
+p40
+sS'__init__'
+p41
+S"<method-wrapper '__init__' of exceptions.TypeError object at 0x03BD5300>"
+p42
+sS'__new__'
+p43
+S'<built-in method __new__ of type object at 0x1E1CCD78>'
+p44
+ssS'evalue'
+p45
+S"'NoneType' object is not callable"
+p46
+sS'request'
+p47
+(dp48
+S'function'
+p49
+S"'user'"
+p50
+sS'body'
+p51
+S'<cStringIO.StringO object at 0x03720560>'
+p52
+sS'wsgi'
+p53
+S"<Storage {'start_response': <function <lambda> a...>, 'HTTP_ACCEPT_ENCODING': 'gzip,deflate,sdch'}}>"
+p54
+sS'extension'
+p55
+S"'html'"
+p56
+sS'vars'
+p57
+S'<Storage {}>'
+p58
+sS'cid'
+p59
+S'None'
+p60
+sS'url'
+p61
+S'<gluon.html.XML object at 0x033C9FB0>'
+p62
+sg27
+S"['logout']"
+p63
+sS'controller'
+p64
+S"'default'"
+p65
+sS'cookies'
+p66
+S"<SimpleCookie: session_id_admin='127-0-0-1-d300d...'127-0-0-1-bbf4b239-0e57-49ed-8f6c-50c6bce050e0'>"
+p67
+sS'application'
+p68
+S"'marcado'"
+p69
+sS'ajax'
+p70
+S'False'
+p71
+sS'client'
+p72
+S"'127.0.0.1'"
+p73
+sS'env'
+p74
+S"<Storage {'http_user_agent': 'Mozilla/5.0 (Windo...ch', 'query_string': '', 'wsgi_run_once': False}>"
+p75
+sS'raw_args'
+p76
+S"'logout'"
+p77
+sS'get_vars'
+p78
+S'<Storage {}>'
+p79
+sS'folder'
+p80
+S"r'G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\applications\\marcado/'"
+p81
+sS'now'
+p82
+S'datetime.datetime(2011, 1, 5, 14, 58, 18, 655000)'
+p83
+sS'post_vars'
+p84
+S'<Storage {}>'
+p85
+ssS'frames'
+p86
+(lp87
+(dp88
+S'file'
+p89
+S'G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\gluon\\restricted.py'
+p90
+sS'dump'
+p91
+(dp92
+sS'lnum'
+p93
+I188
+sS'lines'
+p94
+(dp95
+sS'call'
+p96
+S"(code='# -*- coding: utf-8 -*- \\n\\n######################...m=auth())\\n\\nresponse._vars=response._caller(user)\\n', environment={'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}, layer=r'G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\applications\\marcado/controllers/default.py')"
+p97
+sS'func'
+p98
+S'restricted'
+p99
+sa(dp100
+g89
+S'G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\applications\\marcado\\controllers\\default.py'
+p101
+sg91
+(dp102
+sg93
+I56
+sg94
+(dp103
+I45
+S'    to decorate functions that need access control'
+p104
+sI46
+S'    """'
+p105
+sI47
+S''
+sI48
+S'    # Captura o argumento'
+p106
+sI49
+S'    arg = request.arg(0)'
+p107
+sI50
+S''
+sI51
+S'    if arg == "logout":'
+p108
+sI52
+S"        response.flash = T('Usu\xc3\xa1rio desconectado.')"
+p109
+sI53
+S''
+sI54
+S'    return dict(form=auth())'
+p110
+ssg96
+S'()'
+p111
+sg98
+S'<module>'
+p112
+sa(dp113
+g89
+S'G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\gluon\\globals.py'
+p114
+sg91
+(dp115
+sg93
+I96
+sg94
+(dp116
+sg96
+S'(f=<function user at 0x0385A4B0>)'
+p117
+sg98
+S'<lambda>'
+p118
+sa(dp119
+g89
+S'G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\applications\\marcado\\controllers\\default.py'
+p120
+sg91
+(dp121
+sg93
+I49
+sg94
+(dp122
+I44
+S"        @auth.requires_permission('read','table name',record_id)"
+p123
+sI45
+S'    to decorate functions that need access control'
+p124
+sI46
+S'    """'
+p125
+sI47
+S''
+sI48
+S'    # Captura o argumento'
+p126
+sI49
+S'    arg = request.arg(0)'
+p127
+sI50
+S''
+sI51
+S'    if arg == "logout":'
+p128
+sI52
+S"        response.flash = T('Usu\xc3\xa1rio desconectado.')"
+p129
+sI53
+S''
+ssg96
+S'()'
+p130
+sg98
+S'user'
+p131
+sasS'pyver'
+p132
+S'Python 2.5.4: G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\web2py_no_console.exe'
+p133
+sS'session'
+p134
+(dp135
+S'flash'
+p136
+S'None'
+p137
+sS'auth'
+p138
+S"<Storage {'expiration': 3600, 'user': <Storage {...1, 1, 5, 14, 58, 18, 655000), 'remember': False}>"
+p139
+sS'_formkey[login]'
+p140
+S"'02a1b9e7-2f34-4ec3-ab7f-77c631368e53'"
+p141
+sS'_formkey[servicos/None]'
+p142
+S"'c24e844e-40c8-49ba-9bb6-7218f1fc5521'"
+p143
+ssS'etype'
+p144
+S"<type 'exceptions.TypeError'>"
+p145
+sS'date'
+p146
+S'Wed Jan 05 14:58:18 2011'
+p147
+sS'response'
+p148
+(dp149
+S'status'
+p150
+S'200'
+p151
+sg51
+S'<cStringIO.StringO object at 0x03BD4F00>'
+p152
+sg66
+S"<SimpleCookie: session_id_marcado='127-0-0-1-932c6f33-79cc-453d-b60c-ab300f5de6be'>"
+p153
+sS'_vars'
+p154
+S'None'
+p155
+sS'title'
+p156
+S"'Marcado!'"
+p157
+sS'session_file'
+p158
+S"<open file 'G:\\Desenvolvimento\\Python\\web2py\\Win...53d-b60c-ab300f5de6be', mode 'rb+' at 0x03265B18>"
+p159
+sS'flash'
+p160
+S"''"
+p161
+sS'_custom_rollback'
+p162
+S'None'
+p163
+sS'session_id'
+p164
+S"'127-0-0-1-932c6f33-79cc-453d-b60c-ab300f5de6be'"
+p165
+sS'headers'
+p166
+S"<Storage {'Expires': 'Wed, 05 Jan 2011 16:58:18 ...he, must-revalidate, post-check=0, pre-check=0'}>"
+p167
+sS'meta'
+p168
+S"<Storage {'keywords': 'web2py, python, framework...Enterprise Framework', 'author': 'Gilson Filho'}>"
+p169
+sS'session_filename'
+p170
+S"r'G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\...ns\\127-0-0-1-932c6f33-79cc-453d-b60c-ab300f5de6be'"
+p171
+sS'postprocessing'
+p172
+S'[]'
+p173
+sS'menu'
+p174
+S"[(<lazyT 'Home'>, False, <gluon.html.XML object at 0x037DD310>, []), (<lazyT 'This App'>, False, <gluon.html.XML object at 0x037DD4D0>, [(<lazyT 'Controller'>, False, <gluon.html.XML object at 0x037DD130>), (<lazyT 'View'>, False, <gluon.html.XML object at 0x037DD2B0>), (<lazyT 'Layout'>, False, <gluon.html.XML object at 0x037DDC10>), (<lazyT 'Stylesheet'>, False, <gluon.html.XML object at 0x037DD9B0>), (<lazyT 'DB Model'>, False, <gluon.html.XML object at 0x037DD050>), (<lazyT 'Menu Model'>, False, <gluon.html.XML object at 0x037DDF10>), (<lazyT 'Database'>, False, <gluon.html.XML object at 0x037DD210>), (<lazyT 'Errors'>, False, <gluon.html.XML object at 0x037DD450>), (<lazyT 'About'>, False, <gluon.html.XML object at 0x032DA590>)]), (<lazyT 'Resources'>, False, None, [(<lazyT 'Documentation'>, False, 'http://www.web2py.com/book', [(<lazyT 'Preface'>, False, 'http://www.web2py.com/book/default/chapter/00'), (<lazyT 'Introduction'>, False, 'http://www.web2py.com/book/default/chapter/01'), (<lazyT 'Python'>, False, 'http://www.web2py.com/book/default/chapter/02'), (<lazyT 'Overview'>, False, 'http://www.web2py.com/book/default/chapter/03'), (<lazyT 'The Core'>, False, 'http://www.web2py.com/book/default/chapter/04'), (<lazyT 'The Views'>, False, 'http://www.web2py.com/book/default/chapter/05'), (<lazyT 'Database'>, False, 'http://www.web2py.com/book/default/chapter/06'), (<lazyT 'Forms and Validators'>, False, 'http://www.web2py.com/book/default/chapter/07'), (<lazyT 'Access Control'>, False, 'http://www.web2py.com/book/default/chapter/08'), (<lazyT 'Services'>, False, 'http://www.web2py.com/book/default/chapter/09'), (<lazyT 'Ajax Recipes'>, False, 'http://www.web2py.com/book/default/chapter/10'), (<lazyT 'Deployment Recipes'>, False, 'http://www.web2py.com/book/default/chapter/11'), (<lazyT 'Other Recipes'>, False, 'http://www.web2py.com/book/default/chapter/12'), (<lazyT 'Buy this book'>, False, 'http://stores.lulu.com/web2py')]), (<lazyT 'Community'>, False, None, [(<lazyT 'Groups'>, False, 'http://www.web2py.com/examples/default/usergroups'), (<lazyT 'Twitter'>, False, 'http://twitter.com/web2py'), (<lazyT 'Live chat'>, False, 'http://mibbit.com/?channel=%23web2py&server=irc.mibbit.net'), (<lazyT 'User Voice'>, False, 'http://web2py.uservoice.com/')]), (<lazyT 'Web2py'>, False, 'http://www.web2py.com', [(<lazyT 'Download'>, False, 'http://www.web2py.com/examples/default/download'), (<lazyT 'Support'>, False, 'http://www.web2py.com/examples/default/support'), (<lazyT 'Quick Examples'>, False, 'http://web2py.com/examples/default/examples'), (<lazyT 'FAQ'>, False, 'http://web2py.com/AlterEgo'), (<lazyT 'Free Applications'>, False, 'http://web2py.com/appliances'), (<lazyT 'Plugins'>, False, 'http://web2py.com/plugins'), (<lazyT 'Recipes'>, False, 'http://web2pyslices.com/'), (<lazyT 'Demo'>, False, 'http://web2py.com/demo_admin'), (<lazyT 'Semantic'>, False, 'http://web2py.com/semantic'), (<lazyT 'Layouts'>, False, 'http://web2py.com/layouts'), (<lazyT 'Videos'>, False, 'http://www.web2py.com/examples/default/videos/')])])]"
+p175
+sS'_view_environment'
+p176
+S"{'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}"
+p177
+sS'session_id_name'
+p178
+S"'session_id_marcado'"
+p179
+sS'_custom_commit'
+p180
+S'None'
+p181
+sS'_caller'
+p182
+S'<function <lambda> at 0x037DC9F0>'
+p183
+sS'files'
+p184
+S'[]'
+p185
+sS'view'
+p186
+S"'default/user.html'"
+p187
+ssS'locals'
+p188
+(dp189
+ssS'traceback'
+p190
+S'Traceback (most recent call last):\n  File "gluon/restricted.py", line 188, in restricted\n  File "G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\applications\\marcado/controllers/default.py", line 56, in <module>\n  File "gluon/globals.py", line 96, in <lambda>\n  File "G:\\Desenvolvimento\\Python\\web2py\\Windows\\web2py\\applications\\marcado/controllers/default.py", line 49, in user\nTypeError: \'NoneType\' object is not callable\n'
+p191
+s.

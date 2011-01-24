@@ -1,0 +1,1028 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/media/DADOS/Projetos/web2py/applications/marcado/views/agenda/index.html'
+p4
+sS'code'
+p5
+S'response.write(\'<!DOCTYPE html>\\n<html lang="\', escape=False)\nresponse.write(T.accepted_language or \'en\')\nresponse.write(\'" class="no-js"><!-- no-js need it for modernzr -->\\n    <head>\\n        <meta charset="utf-8" />        \\n        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">\\n    \\n        <title>\', escape=False)\nresponse.write(response.title or request.application)\nresponse.write(\'</title>\\n    \\n        <!-- http://dev.w3.org/html5/markup/meta.name.html -->\\n        <meta name="application-name" content="\', escape=False)\nresponse.write(request.application)\nresponse.write(\'" /> \\n    \\n        <!-- Speaking of Google, don\\\'t forget to set your site up: http://google.com/webmasters -->\\n        <meta name="google-site-verification" content="" />\\n    \\n        <!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->\\n        <link rel="shortcut icon" href="\', escape=False)\nresponse.write(URL(\'static\',\'favicon.ico\'))\nresponse.write(\'" type="image/x-icon">\\n    \\n        <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->\\n        <script src="\', escape=False)\nresponse.write(URL(\'static\',\'js/modernizr-1.6.min.js\'))\nresponse.write(\'"></script>\\n    \\n        <!-- Arquivos CSS e Javascript -->\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'css/base.css\'))\nresponse.write(\'\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'css/formularios.css\'))\nresponse.write(\'              \\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'css/superfish.css\'))\nresponse.write(\'\\n        \\n        <!-- Modulo de clientes -->\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'css/modulos/clientes/clientes.css\'))\nresponse.write(\'\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'js/modulos/clientes/clientes.js\'))\nresponse.write(\'\\n        \\n        <!-- Modulo de Funcionarios -->\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'css/modulos/funcionarios/funcionarios.css\'))\nresponse.write(\'\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'js/modulos/funcionarios/funcionarios.js\'))\nresponse.write(\'\\n        \\n        <!-- Modulo de Servicos -->\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'css/modulos/servicos/servicos.css\'))\nresponse.write(\'\\n\\n        <!-- Modulo de Agenda -->\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'css/modulos/agenda/agenda.css\'))\nresponse.write(\'\\n        \', escape=False)\nresponse.files.append(URL(\'static\',\'js/modulos/agenda/agenda.js\'))\nresponse.write(\'\\n\\n        \', escape=False)\n#------ include web2py specific js code (jquery, calendar, form stuff) ------\nresponse.write(\'\\n        \', escape=False)\n# Arquivos CSS e Javascript que serao usados em todo o sistema\nresponse.files.insert(0,URL(\'static\',\'js/jquery.js\'))\nresponse.files.insert(1,URL(\'static\',\'css/custom-theme/jquery-ui-1.8.7.custom.css\'))\nresponse.files.insert(2,URL(\'static\',\'js/jquery-ui-1.8.7.custom.min.js\'))\nresponse.files.insert(3,URL(\'static\',\'js/jquery.maskedinput-1.1.4.pack.js\'))\nresponse.files.insert(4,URL(\'static\',\'js/jquery.datepick.js\'))\nresponse.files.insert(5,URL(\'static\',\'js/jquery.datepick-pt-BR.js\'))\nresponse.files.insert(6,URL(\'static\',\'css/flora.datepick.css\'))\nresponse.files.insert(7,URL(\'static\',\'js/fullcalendar.min.js\'))\nresponse.files.insert(8,URL(\'static\',\'css/fullcalendar.css\'))\nfor _item in response.meta or []:\n    response.write(\'\\n     <meta name="\', escape=False)\n    response.write(_item)\n    response.write(\'" content="\', escape=False)\n    response.write(response.meta[_item])\n    response.write(\'" />\', escape=False)\n    pass\nfor _k,_file in enumerate(response.files or []):\n    if _file in response.files[:_k]:\n        continue\n    _file0=_file.lower().split(\'?\')[0]\n    if _file0.endswith(\'.css\'):\n        response.write(\'\\n     <link href="\', escape=False)\n        response.write(_file)\n        response.write(\'" rel="stylesheet" type="text/css" />\', escape=False)\n    elif _file0.endswith(\'.js\'):\n        response.write(\'\\n     <script src="\', escape=False)\n        response.write(_file)\n        response.write(\'" type="text/javascript"></script>\', escape=False)\n        pass\n    pass\nresponse.write(\'\\n  \\n<script type="text/javascript"><!--\\nfunction popup(url) {\\n  newwindow=window.open(url,\\\'name\\\',\\\'height=400,width=600\\\');\\n  if (window.focus) newwindow.focus();\\n  return false;\\n}\\nfunction collapse(id) { jQuery(\\\'#\\\'+id).slideToggle(); }\\nfunction fade(id,value) { if(value>0) jQuery(\\\'#\\\'+id).hide().fadeIn(\\\'slow\\\'); else jQuery(\\\'#\\\'+id).show().fadeOut(\\\'slow\\\'); }\\nfunction ajax(u,s,t) {\\n    query = \\\'\\\';\\n    if (typeof s == "string") {\\n        d = jQuery(s).serialize();\\n        if(d){ query = d; }\\n    } else {\\n        pcs = [];\\n        for(i=0; i<s.length; i++) {\\n            q = jQuery("[name="+s[i]+"]").serialize();\\n            if(q){pcs.push(q);}\\n        }\\n        if (pcs.length>0){query = pcs.join("&");}\\n    }\\n    jQuery.ajax({type: "POST", url: u, data: query, success: function(msg) { if(t) { if(t==\\\':eval\\\') eval(msg); else jQuery("#" + t).html(msg); } } }); \\n}\\n\\nString.prototype.reverse = function () { return this.split(\\\'\\\').reverse().join(\\\'\\\');};\\nfunction web2py_ajax_init() {\\n  jQuery(\\\'.hidden\\\').hide();\\n  jQuery(\\\'.error\\\').hide().slideDown(\\\'slow\\\');\\n  jQuery(\\\'.flash\\\').click(function() { jQuery(this).fadeOut(\\\'slow\\\'); return false; });\\n  // jQuery(\\\'input[type=submit]\\\').click(function(){var t=jQuery(this);t.hide();t.after(\\\'<input class="submit_disabled" disabled="disabled" type="submit" name="\\\'+t.attr("name")+\\\'_dummy" value="\\\'+t.val()+\\\'">\\\')});\\n  jQuery(\\\'input.integer\\\').keyup(function(){this.value=this.value.reverse().replace(/[^0-9\\\\-]|\\\\-(?=.)/g,\\\'\\\').reverse();});\\n  jQuery(\\\'input.double,input.decimal\\\').keyup(function(){this.value=this.value.reverse().replace(/[^0-9\\\\-\\\\.]|[\\\\-](?=.)|[\\\\.](?=[0-9]*[\\\\.])/g,\\\'\\\').reverse();});\\n  jQuery("input[type=\\\'checkbox\\\'].delete").each(function(){jQuery(this).click(function() { if(this.checked) if(!confirm("\', escape=False)\nresponse.write(T(\'Sure you want to delete this object?\'))\nresponse.write(\'")) this.checked=false; });});\\n\\n  try {\\n  } catch(e) {};\\n  try {} catch(e) {};\\n  try { jQuery("input.time").timeEntry(); } catch(e) {};\\n};\\n\\njQuery(document).ready(function() {   \\n   var flash = jQuery(\\\'.flash\\\');\\n   flash.hide();\\n   if(flash.html()) flash.slideDown();\\n   web2py_ajax_init();\\n\\n  //Configura campos de data\\n  jQuery("input.date").click(function(){\\n    jQuery("input.date").datepick();\\n  });\\n  jQuery("input.date").focus(function() {\\n    jQuery("input.date").datepick();\\n  });\\n   \\n\\n});\\nfunction web2py_trap_form(action,target) {\\n   jQuery(\\\'#\\\'+target+\\\' form\\\').each(function(i){\\n      var form=jQuery(this);\\n      if(!form.hasClass(\\\'no_trap\\\'))\\n        form.submit(function(obj){\\n         jQuery(\\\'.flash\\\').hide().html(\\\'\\\');\\n         web2py_ajax_page(\\\'post\\\',action,form.serialize(),target);\\n         return false;\\n      });\\n   });\\n}\\nfunction web2py_ajax_page(method,action,data,target) {\\n  jQuery.ajax({\\\'type\\\':method,\\\'url\\\':action,\\\'data\\\':data,\\n    \\\'beforeSend\\\':function(xhr) {\\n      xhr.setRequestHeader(\\\'web2py-component-location\\\',document.location);\\n      xhr.setRequestHeader(\\\'web2py-component-element\\\',target);},\\n    \\\'complete\\\':function(xhr,text){\\n      var html=xhr.responseText;\\n      var content=xhr.getResponseHeader(\\\'web2py-component-content\\\'); \\n      var command=xhr.getResponseHeader(\\\'web2py-component-command\\\');\\n      var flash=xhr.getResponseHeader(\\\'web2py-component-flash\\\');\\n      var t = jQuery(\\\'#\\\'+target);\\n      if(content==\\\'prepend\\\') t.prepend(html); \\n      else if(content==\\\'append\\\') t.append(html);\\n      else if(content!=\\\'hide\\\') t.html(html);  \\n      web2py_trap_form(action,target);\\n      web2py_ajax_init();      \\n      if(command) eval(command);\\n      if(flash) jQuery(\\\'.flash\\\').html(flash).slideDown();\\n      }\\n    });\\n}\\nfunction web2py_component(action,target) {\\n    jQuery(document).ready(function(){ web2py_ajax_page(\\\'get\\\',action,null,target); });\\n}\\n//--></script>\\n\', escape=False)\nresponse.write(\'\\n       \\n    </head>\\n\\n    <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->  \\n    <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->\\n    <!--[if IE 7 ]>    <body class="ie7"> <![endif]-->\\n    <!--[if IE 8 ]>    <body class="ie8"> <![endif]-->\\n    <!--[if IE 9 ]>    <body class="ie9"> <![endif]-->\\n    <!--[if (gt IE 9)|!(IE)]><!--><body><!--<![endif]-->\\n    <div id="headBlock">\\n        <div class="headWrap">\\n            <div class="headTitle">\\n                <a href="#">Marcado!</a>\\n\\n            </div>\\n            <div class="headMenus">\\n                <ul class="mainNav">\\n                    <li class="usuario">\\n                        \', escape=False)\nif session.auth:\n    response.write(\'\\n                          <b>Usu\\xc3\\xa1rio:</b> \\n                          <a href="\', escape=False)\n    response.write(URL(request.application, \'default\', \'user\', args = \'profile\'))\n    response.write(\'">\\n                            \', escape=False)\n    response.write(session.auth.user.username)\n    response.write(\'\\n                          </a> | \\n                          <a href="\', escape=False)\n    response.write(URL(request.application, \'default\',\'user\',args=\'change_password\'))\n    response.write(\'">Alterar Senha</a>\\n                        \', escape=False)\n    pass\nresponse.write(\'                    \\n                    </li>\\n                </ul>\\n                \', escape=False)\nresponse.write(\'<ul class="subNav">\\n    <!-- \', escape=False)\nresponse.write(MENU(response.menu,_class=\'sf-menu\'))\nresponse.write(\' -->\\n    <li class="current_page_item">\\n      <a href="\', escape=False)\nresponse.write(URL(\'agenda\',\'index\'))\nresponse.write(\'" class="button">\\n        <span class="link_menu menu_agenda">Agenda</span>\\n      </a>\\n    </li>\\n    <li>\\n        <a href="\', escape=False)\nresponse.write(URL(\'agenda\', \'novo\'))\nresponse.write(\'" class="button">\\n            <span class="link_menu menu_horario">Hor\\xc3\\xa1rios</span>\\n        </a>\\n    </li>\\n    <li>\\n        <a href="\', escape=False)\nresponse.write(URL(\'clientes\',\'index\'))\nresponse.write(\'" class="button">\\n            <span class="link_menu menu_clientes">Clientes</span>\\n        </a>                    \\n    </li>\\n    <li>\\n        <a href="\', escape=False)\nresponse.write(URL(\'servicos\', \'index\'))\nresponse.write(\'" class="button">\\n            <span class="link_menu menu_pedidos">Servi\\xc3\\xa7os</span>\\n        </a>                    \\n    </li>\\n    <li>\\n        <a href="\', escape=False)\nresponse.write(URL(\'funcionarios\', \'index\'))\nresponse.write(\'" class="button">\\n            <span class="link_menu menu_perfil">Funcion\\xc3\\xa1rios</span>\\n        </a>                    \\n    </li>  \\n    <li>\\n        <a href="\', escape=False)\nresponse.write(URL(\'default\', \'user\', args = \'logout\'))\nresponse.write(\'" class="button">\\n            <span class="link_menu menu_sair">Sair</span>\\n        </a>                    \\n    </li>                \\n</ul>\\n\', escape=False)\nresponse.write(\'               \\n            </div>\\n        </div>\\n        <div class="headFooter"></div>\\n    </div>\\n    \\n    <div id="wrapper">\\n        <div id="mainArea">\\n            \', escape=False)\nif response.flash:\n    response.write(\'\\n                <div class="ui-widget" style="margin-top: 20px; padding: 0 .7em;">\\n                    <div class="ui-state-highlight ui-corner-all">\\n                        <p>\\n                            <span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>\\n                            \', escape=False)\n    response.write(response.flash or \'\')\n    response.write(\'\\n                        </p>\\n                    </div>\\n                </div> <!-- notification div -->        \\n            \', escape=False)\n    pass\nresponse.write(\'\\n            \', escape=False)\nresponse.write(\'\\n<script type="javascript">\\n    //Inserindo o calendario\\n    jQuery("#calendar").fullCalendar({\\n        header: {\\n            left: \\\'prev,next today\\\',\\n            center: \\\'title\\\',\\n            right: \\\'month,agendaWeek,agendaDay\\\',\\n        },\\n        editable: true,\\n        events: [\', escape=False)\nresponse.write(URL(\'agenda\',\'call\',args[\'json\',\'index\']))\nresponse.write(\']\\n    });\\n</script>\\n<h2>Agenda do Usu\\xc3\\xa1rio: \', escape=False)\nresponse.write(session.auth.user.username)\nresponse.write(\'</h2>\\n<div id="calendar"></div>\\n\', escape=False)\nresponse.write(\' \\n        </div>\\n    </div>      \\n    \\n    <div class="pageFooter">\\n      \', escape=False)\nresponse.write(\'<div class="footerContents">\\n  <p>Copyright &copy; 2010-2011 | Vers\\xc3\\xa3o 1.0</p> \\n  <a href="http://web2py.com"><img src="\', escape=False)\nresponse.write(URL(\'static\',\'images/poweredby.png\'))\nresponse.write(\'" alt="web2py"/></a><br />\\n</div>\\n\', escape=False)\nresponse.write(\'\\n    </div>   \\n  </body>\\n</html>\\n\', escape=False)'
+p6
+sS'snapshot'
+p7
+(dp8
+S'exception'
+p9
+(dp10
+S'__hash__'
+p11
+S"<method-wrapper '__hash__' of exceptions.NameError object>"
+p12
+sS'__setattr__'
+p13
+S"<method-wrapper '__setattr__' of exceptions.NameError object>"
+p14
+sS'__reduce_ex__'
+p15
+S'<built-in method __reduce_ex__ of exceptions.NameError object>'
+p16
+sS'__getslice__'
+p17
+S"<method-wrapper '__getslice__' of exceptions.NameError object>"
+p18
+sS'__getitem__'
+p19
+S"<method-wrapper '__getitem__' of exceptions.NameError object>"
+p20
+sS'__setstate__'
+p21
+S'<built-in method __setstate__ of exceptions.NameError object>'
+p22
+sS'args'
+p23
+S'("name \'args\' is not defined",)'
+p24
+sS'__reduce__'
+p25
+S'<built-in method __reduce__ of exceptions.NameError object>'
+p26
+sS'__str__'
+p27
+S"<method-wrapper '__str__' of exceptions.NameError object>"
+p28
+sS'__format__'
+p29
+S'<built-in method __format__ of exceptions.NameError object>'
+p30
+sS'__getattribute__'
+p31
+S"<method-wrapper '__getattribute__' of exceptions.NameError object>"
+p32
+sS'__class__'
+p33
+S"<type 'exceptions.NameError'>"
+p34
+sS'__unicode__'
+p35
+S'<built-in method __unicode__ of exceptions.NameError object>'
+p36
+sS'__delattr__'
+p37
+S"<method-wrapper '__delattr__' of exceptions.NameError object>"
+p38
+sS'__subclasshook__'
+p39
+S'<built-in method __subclasshook__ of type object>'
+p40
+sS'__repr__'
+p41
+S"<method-wrapper '__repr__' of exceptions.NameError object>"
+p42
+sS'__dict__'
+p43
+S'{}'
+p44
+sS'__sizeof__'
+p45
+S'<built-in method __sizeof__ of exceptions.NameError object>'
+p46
+sS'__doc__'
+p47
+S"'Name not found globally.'"
+p48
+sS'__init__'
+p49
+S"<method-wrapper '__init__' of exceptions.NameError object>"
+p50
+sS'__new__'
+p51
+S'<built-in method __new__ of type object>'
+p52
+ssS'evalue'
+p53
+S"name 'args' is not defined"
+p54
+sS'request'
+p55
+(dp56
+S'function'
+p57
+S"'index'"
+p58
+sS'body'
+p59
+S'<cStringIO.StringO object>'
+p60
+sS'wsgi'
+p61
+S"<Storage {'start_response': <function <lambda> a...>, 'HTTP_ACCEPT_ENCODING': 'gzip,deflate,sdch'}}>"
+p62
+sS'extension'
+p63
+S"'html'"
+p64
+sS'vars'
+p65
+S'<Storage {}>'
+p66
+sS'cid'
+p67
+S'None'
+p68
+sS'url'
+p69
+S'<gluon.html.XML object>'
+p70
+sS'raw_extension'
+p71
+S'None'
+p72
+sg23
+S'[]'
+p73
+sS'controller'
+p74
+S"'agenda'"
+p75
+sS'cookies'
+p76
+S"<SimpleCookie: session_id_admin='127.0.0.1-0b0a4...'127.0.0.1-fa70f9ea-ccf4-4204-98dc-78dcd672cdf6'>"
+p77
+sS'application'
+p78
+S"'marcado'"
+p79
+sS'ajax'
+p80
+S'False'
+p81
+sS'client'
+p82
+S"'127.0.0.1'"
+p83
+sS'env'
+p84
+S"<Storage {'wsgi_multithread': True, 'http_accept... 'wsgi_run_once': False, 'remote_port': '60583'}>"
+p85
+sS'raw_args'
+p86
+S'None'
+p87
+sS'get_vars'
+p88
+S'<Storage {}>'
+p89
+sS'folder'
+p90
+S"'/media/DADOS/Projetos/web2py/applications/marcado/'"
+p91
+sS'now'
+p92
+S'datetime.datetime(2011, 1, 18, 23, 36, 58, 568962)'
+p93
+sS'post_vars'
+p94
+S'<Storage {}>'
+p95
+ssS'frames'
+p96
+(lp97
+(dp98
+S'file'
+p99
+S'/media/DADOS/Projetos/web2py/gluon/restricted.py'
+p100
+sS'dump'
+p101
+(dp102
+S'environment'
+p103
+S"{'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}"
+p104
+sS'ccode'
+p105
+S'<code object <module> at 0x2b87918, file "/media...cations/marcado/views/agenda/index.html", line 1>'
+p106
+ssS'lnum'
+p107
+I188
+sS'lines'
+p108
+(dp109
+I192
+S'        # XXX Show exception in Wing IDE if running in debugger'
+p110
+sI183
+S'        if type(code) == types.CodeType:'
+p111
+sI184
+S'            ccode = code'
+p112
+sI185
+S'        else:'
+p113
+sI186
+S'            ccode = compile2(code,layer)'
+p114
+sI187
+S''
+sI188
+S'        exec ccode in environment'
+p115
+sI189
+S'    except HTTP:'
+p116
+sI190
+S'        raise'
+p117
+sI191
+S'    except Exception:'
+p118
+ssS'call'
+p119
+S'(code=\'response.write(\\\'<!DOCTYPE html>\\\\n<html lang="\\\', ...  </div>   \\\\n  </body>\\\\n</html>\\\\n\\\', escape=False)\', environment={\'A\': <class \'gluon.html.A\'>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'CENTER\': <class \'gluon.html.CENTER\'>, \'CLEANUP\': <class \'gluon.validators.CLEANUP\'>, \'CODE\': <class \'gluon.html.CODE\'>, \'CRYPT\': <class \'gluon.validators.CRYPT\'>, ...}, layer=\'/media/DADOS/Projetos/web2py/applications/marcado/views/agenda/index.html\')'
+p120
+sS'func'
+p121
+S'restricted'
+p122
+sa(dp123
+g99
+S'/media/DADOS/Projetos/web2py/applications/marcado/views/agenda/index.html'
+p124
+sg101
+(dp125
+sg107
+I102
+sg108
+(dp126
+I96
+S'    response.write(\'\\n                <div class="ui-widget" style="margin-top: 20px; padding: 0 .7em;">\\n                    <div class="ui-state-highlight ui-corner-all">\\n                        <p>\\n                            <span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>\\n                            \', escape=False)'
+p127
+sI97
+S"    response.write(response.flash or '')"
+p128
+sI98
+S"    response.write('\\n                        </p>\\n                    </div>\\n                </div> <!-- notification div -->        \\n            ', escape=False)"
+p129
+sI99
+S'    pass'
+p130
+sI100
+S"response.write('\\n            ', escape=False)"
+p131
+sI101
+S'response.write(\'\\n<script type="javascript">\\n    //Inserindo o calendario\\n    jQuery("#calendar").fullCalendar({\\n        header: {\\n            left: \\\'prev,next today\\\',\\n            center: \\\'title\\\',\\n            right: \\\'month,agendaWeek,agendaDay\\\',\\n        },\\n        editable: true,\\n        events: [\', escape=False)'
+p132
+sI102
+S"response.write(URL('agenda','call',args['json','index']))"
+p133
+sI103
+S"response.write(']\\n    });\\n</script>\\n<h2>Agenda do Usu\\xc3\\xa1rio: ', escape=False)"
+p134
+sI104
+S'response.write(session.auth.user.username)'
+p135
+sI105
+S'response.write(\'</h2>\\n<div id="calendar"></div>\\n\', escape=False)'
+p136
+sI106
+S'response.write(\' \\n        </div>\\n    </div>      \\n    \\n    <div class="pageFooter">\\n      \', escape=False)'
+p137
+sI107
+S'response.write(\'<div class="footerContents">\\n  <p>Copyright &copy; 2010-2011 | Vers\\xc3\\xa3o 1.0</p> \\n  <a href="http://web2py.com"><img src="\', escape=False)'
+p138
+sI108
+S"response.write(URL('static','images/poweredby.png'))"
+p139
+sI109
+S'response.write(\'" alt="web2py"/></a><br />\\n</div>\\n\', escape=False)'
+p140
+sI110
+S"response.write('\\n    </div>   \\n  </body>\\n</html>\\n', escape=False)"
+p141
+sI93
+S'response.write(\'" class="button">\\n            <span class="link_menu menu_sair">Sair</span>\\n        </a>                    \\n    </li>                \\n</ul>\\n\', escape=False)'
+p142
+sI94
+S'response.write(\'               \\n            </div>\\n        </div>\\n        <div class="headFooter"></div>\\n    </div>\\n    \\n    <div id="wrapper">\\n        <div id="mainArea">\\n            \', escape=False)'
+p143
+sI95
+S'if response.flash:'
+p144
+ssg119
+S'()'
+p145
+sg121
+S'<module>'
+p146
+sasS'pyver'
+p147
+S'Python 2.6.6: /usr/bin/python'
+p148
+sS'session'
+p149
+(dp150
+S'_formkey[agenda/None]'
+p151
+S"'121b2a39-7b8f-4418-8020-3f9ab31cf848'"
+p152
+sS'flash'
+p153
+S'None'
+p154
+sS'_formkey[login]'
+p155
+S"'940e3602-170c-45c5-bd9c-f0b7d067d3cc'"
+p156
+sS'auth'
+p157
+S"<Storage {'expiration': 3600, 'user': <Storage {..., 1, 18, 23, 36, 58, 568962), 'remember': False}>"
+p158
+ssS'etype'
+p159
+S"<type 'exceptions.NameError'>"
+p160
+sS'date'
+p161
+S'Tue Jan 18 23:36:58 2011'
+p162
+sS'response'
+p163
+(dp164
+S'status'
+p165
+S'200'
+p166
+sg59
+S'<cStringIO.StringO object>'
+p167
+sg76
+S"<SimpleCookie: session_id_marcado='127.0.0.1-c09e1abf-1f14-431e-9d11-58320a8f2689'>"
+p168
+sS'_vars'
+p169
+S'{\'teste\': \'{\\n    "start": "2011-01-18", \\n    "id": 3, \\n    "title": "Camilla Silva"\\n}\'}'
+p170
+sS'title'
+p171
+S"'Marcado!'"
+p172
+sS'session_file'
+p173
+S"<open file '/media/DADOS/Projetos/web2py/applica...09e1abf-1f14-431e-9d11-58320a8f2689', mode 'rb+'>"
+p174
+sS'flash'
+p175
+S"''"
+p176
+sS'_custom_rollback'
+p177
+S'None'
+p178
+sS'session_id'
+p179
+S"'127.0.0.1-c09e1abf-1f14-431e-9d11-58320a8f2689'"
+p180
+sS'headers'
+p181
+S"<Storage {'Expires': 'Wed, 19 Jan 2011 01:36:58 ...he, must-revalidate, post-check=0, pre-check=0'}>"
+p182
+sS'meta'
+p183
+S"<Storage {'keywords': 'web2py, python, framework...Enterprise Framework', 'author': 'Gilson Filho'}>"
+p184
+sS'session_filename'
+p185
+S"'/media/DADOS/Projetos/web2py/applications/marcad...ns/127.0.0.1-c09e1abf-1f14-431e-9d11-58320a8f2689'"
+p186
+sS'postprocessing'
+p187
+S'[]'
+p188
+sS'menu'
+p189
+S"[(<lazyT 'Home'>, False, <gluon.html.XML object>, []), (<lazyT 'This App'>, False, <gluon.html.XML object>, [(<lazyT 'Controller'>, False, <gluon.html.XML object>), (<lazyT 'View'>, False, <gluon.html.XML object>), (<lazyT 'Layout'>, False, <gluon.html.XML object>), (<lazyT 'Stylesheet'>, False, <gluon.html.XML object>), (<lazyT 'DB Model'>, False, <gluon.html.XML object>), (<lazyT 'Menu Model'>, False, <gluon.html.XML object>), (<lazyT 'Database'>, False, <gluon.html.XML object>), (<lazyT 'Errors'>, False, <gluon.html.XML object>), (<lazyT 'About'>, False, <gluon.html.XML object>)]), (<lazyT 'Resources'>, False, None, [(<lazyT 'Documentation'>, False, 'http://www.web2py.com/book', [(<lazyT 'Preface'>, False, 'http://www.web2py.com/book/default/chapter/00'), (<lazyT 'Introduction'>, False, 'http://www.web2py.com/book/default/chapter/01'), (<lazyT 'Python'>, False, 'http://www.web2py.com/book/default/chapter/02'), (<lazyT 'Overview'>, False, 'http://www.web2py.com/book/default/chapter/03'), (<lazyT 'The Core'>, False, 'http://www.web2py.com/book/default/chapter/04'), (<lazyT 'The Views'>, False, 'http://www.web2py.com/book/default/chapter/05'), (<lazyT 'Database'>, False, 'http://www.web2py.com/book/default/chapter/06'), (<lazyT 'Forms and Validators'>, False, 'http://www.web2py.com/book/default/chapter/07'), (<lazyT 'Access Control'>, False, 'http://www.web2py.com/book/default/chapter/08'), (<lazyT 'Services'>, False, 'http://www.web2py.com/book/default/chapter/09'), (<lazyT 'Ajax Recipes'>, False, 'http://www.web2py.com/book/default/chapter/10'), (<lazyT 'Deployment Recipes'>, False, 'http://www.web2py.com/book/default/chapter/11'), (<lazyT 'Other Recipes'>, False, 'http://www.web2py.com/book/default/chapter/12'), (<lazyT 'Buy this book'>, False, 'http://stores.lulu.com/web2py')]), (<lazyT 'Community'>, False, None, [(<lazyT 'Groups'>, False, 'http://www.web2py.com/examples/default/usergroups'), (<lazyT 'Twitter'>, False, 'http://twitter.com/web2py'), (<lazyT 'Live chat'>, False, 'http://mibbit.com/?channel=%23web2py&server=irc.mibbit.net'), (<lazyT 'User Voice'>, False, 'http://web2py.uservoice.com/')]), (<lazyT 'Web2py'>, False, 'http://www.web2py.com', [(<lazyT 'Download'>, False, 'http://www.web2py.com/examples/default/download'), (<lazyT 'Support'>, False, 'http://www.web2py.com/examples/default/support'), (<lazyT 'Quick Examples'>, False, 'http://web2py.com/examples/default/examples'), (<lazyT 'FAQ'>, False, 'http://web2py.com/AlterEgo'), (<lazyT 'Free Applications'>, False, 'http://web2py.com/appliances'), (<lazyT 'Plugins'>, False, 'http://web2py.com/plugins'), (<lazyT 'Recipes'>, False, 'http://web2pyslices.com/'), (<lazyT 'Demo'>, False, 'http://web2py.com/demo_admin'), (<lazyT 'Semantic'>, False, 'http://web2py.com/semantic'), (<lazyT 'Layouts'>, False, 'http://web2py.com/layouts'), (<lazyT 'Videos'>, False, 'http://www.web2py.com/examples/default/videos/')])])]"
+p190
+sS'_view_environment'
+p191
+S"{'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}"
+p192
+sS'session_id_name'
+p193
+S"'session_id_marcado'"
+p194
+sS'_custom_commit'
+p195
+S'None'
+p196
+sS'_caller'
+p197
+S'<function <lambda>>'
+p198
+sS'files'
+p199
+S'[<gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>, <gluon.html.XML object>]'
+p200
+sS'view'
+p201
+S"'agenda/index.html'"
+p202
+ssS'locals'
+p203
+(dp204
+S'Service'
+p205
+S"<class 'gluon.tools.Service'>"
+p206
+sS'OBJECT'
+p207
+S"<class 'gluon.html.OBJECT'>"
+p208
+sS'_file'
+p209
+S'<gluon.html.XML object>'
+p210
+sS'dbg'
+p211
+S'<function dbg>'
+p212
+sS'SQLDB'
+p213
+S"<class 'gluon.dal.DAL'>"
+p214
+sg149
+S"<Storage {'_formkey[agenda/None]': '121b2a39-7b8...login]': '940e3602-170c-45c5-bd9c-f0b7d067d3cc'}>"
+p215
+sS'LINK'
+p216
+S"<class 'gluon.html.LINK'>"
+p217
+sS'BR'
+p218
+S"<class 'gluon.html.BR'>"
+p219
+sS'local_import'
+p220
+S'<function <lambda>>'
+p221
+sS'OPTGROUP'
+p222
+S"<class 'gluon.html.OPTGROUP'>"
+p223
+sS'PRE'
+p224
+S"<class 'gluon.html.PRE'>"
+p225
+sS'IS_INT_IN_RANGE'
+p226
+S"<class 'gluon.validators.IS_INT_IN_RANGE'>"
+p227
+sS'IS_LOWER'
+p228
+S"<class 'gluon.validators.IS_LOWER'>"
+p229
+sS'IS_STRONG'
+p230
+S"<class 'gluon.validators.IS_STRONG'>"
+p231
+sS'Recaptcha'
+p232
+S"<class 'gluon.tools.Recaptcha'>"
+p233
+sS'cache'
+p234
+S'<gluon.cache.Cache object>'
+p235
+sS'IS_IN_DB'
+p236
+S"<class 'gluon.validators.IS_IN_DB'>"
+p237
+sS'table_field'
+p238
+S'<_sre.SRE_Pattern object>'
+p239
+sS'TAG'
+p240
+S'<gluon.html.__TAG__ object>'
+p241
+sS'_k'
+p242
+S'18'
+p243
+sS'SQLField'
+p244
+S"<class 'gluon.dal.Field'>"
+p245
+sS'mail'
+p246
+S'<gluon.tools.Mail object>'
+p247
+sS'plugin_powertablesdb'
+p248
+S"<DAL {'auth_permission': <Table {'ALL': <gluon.d...0x2d58e50>}>, '_migrate': True, '_pool_size': 0}>"
+p249
+sS'BODY'
+p250
+S"<class 'gluon.html.BODY'>"
+p251
+sS'IS_DATE_IN_RANGE'
+p252
+S"<class 'gluon.validators.IS_DATE_IN_RANGE'>"
+p253
+sS'PowerTable'
+p254
+S"<class 'PowerTable'>"
+p255
+sS'TH'
+p256
+S"<class 'gluon.html.TH'>"
+p257
+sS'URL'
+p258
+S'<function _URL>'
+p259
+sS'db'
+p260
+S"<DAL {'auth_permission': <Table {'ALL': <gluon.d...0x2d58e50>}>, '_migrate': True, '_pool_size': 0}>"
+p261
+sS'auth'
+p262
+S'<gluon.tools.Auth object>'
+p263
+sS'P'
+S"<class 'gluon.html.P'>"
+p264
+sS'teste'
+p265
+S'\'{\\n    "start": "2011-01-18", \\n    "id": 3, \\n    "title": "Camilla Silva"\\n}\''
+p266
+sS'TFOOT'
+p267
+S"<class 'gluon.html.TFOOT'>"
+p268
+sS'XHTML'
+p269
+S"<class 'gluon.html.XHTML'>"
+p270
+sS'datetime'
+p271
+S"<module 'datetime' from '/usr/lib/python2.6/lib-dynload/datetime.so'>"
+p272
+sS'ON'
+p273
+S'True'
+p274
+sS'OL'
+p275
+S"<class 'gluon.html.OL'>"
+p276
+sS'TEXTAREA'
+p277
+S"<class 'gluon.html.TEXTAREA'>"
+p278
+sS'MENU'
+p279
+S"<class 'gluon.html.MENU'>"
+p280
+sS'powerTable'
+p281
+S"<Storage {'extra': {}, 'columnsearch': False, 'd...ate': <function plugin_powertable at 0x2b865f0>}>"
+p282
+sS'_file0'
+p283
+S"'/marcado/static/js/modulos/agenda/agenda.js'"
+p284
+sS'IS_IMAGE'
+p285
+S"<class 'gluon.validators.IS_IMAGE'>"
+p286
+sS'LOAD'
+p287
+S'<gluon.compileapp.LoadFactory object>'
+p288
+sS'CODE'
+p289
+S"<class 'gluon.html.CODE'>"
+p290
+sS'HTTP'
+p291
+S"<class 'gluon.http.HTTP'>"
+p292
+sS'HR'
+p293
+S"<class 'gluon.html.HR'>"
+p294
+sS'IS_DATETIME'
+p295
+S"<class 'gluon.validators.IS_DATETIME'>"
+p296
+sS'HEAD'
+p297
+S"<class 'gluon.html.HEAD'>"
+p298
+sS'LABEL'
+p299
+S"<class 'gluon.html.LABEL'>"
+p300
+sS'META'
+p301
+S"<class 'gluon.html.META'>"
+p302
+sS'plugins'
+p303
+S'<gluon.tools.PluginManager object>'
+p304
+sS'lengthmenu'
+p305
+S"[[2, 5, 10, 25, 50, 100, -1], [2, 5, 10, 25, 50, 100, 'All']]"
+p306
+sS'SELECT'
+p307
+S"<class 'gluon.html.SELECT'>"
+p308
+sS'CENTER'
+p309
+S"<class 'gluon.html.CENTER'>"
+p310
+sS'prettydate'
+p311
+S'<function prettydate>'
+p312
+sS'custom_auth_table'
+p313
+S"<Table {'_db': <DAL {'auth_permission': <Table {...>, '_id': <gluon.dal.Field object at 0x2d58e50>}>"
+p314
+sS'Crud'
+p315
+S"<class 'gluon.tools.Crud'>"
+p316
+sS'Auth'
+p317
+S"<class 'gluon.tools.Auth'>"
+p318
+sS'IS_EQUAL_TO'
+p319
+S"<class 'gluon.validators.IS_EQUAL_TO'>"
+p320
+sS'IS_LIST_OF'
+p321
+S"<class 'gluon.validators.IS_LIST_OF'>"
+p322
+sS'SQLFORM'
+p323
+S"<class 'gluon.sqlhtml.SQLFORM'>"
+p324
+sS'_item'
+p325
+S"'author'"
+p326
+sS'EM'
+p327
+S"<class 'gluon.html.EM'>"
+p328
+sS'redirect'
+p329
+S'<function redirect>'
+p330
+sS'FIELDSET'
+p331
+S"<class 'gluon.html.FIELDSET'>"
+p332
+sS'__builtins__'
+p333
+S"{'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}"
+p334
+sS'embed64'
+p335
+S'<function embed64>'
+p336
+sS'INPUT'
+p337
+S"<class 'gluon.html.INPUT'>"
+p338
+sS'EMBED'
+p339
+S"<class 'gluon.html.EMBED'>"
+p340
+sS'plugin_powertable'
+p341
+S'<function plugin_powertable>'
+p342
+sS'H2'
+p343
+S"<class 'gluon.html.H2'>"
+p344
+sS'H3'
+p345
+S"<class 'gluon.html.H3'>"
+p346
+sS'H1'
+p347
+S"<class 'gluon.html.H1'>"
+p348
+sS'H6'
+p349
+S"<class 'gluon.html.H6'>"
+p350
+sS'H4'
+p351
+S"<class 'gluon.html.H4'>"
+p352
+sS'H5'
+p353
+S"<class 'gluon.html.H5'>"
+p354
+sS'UL'
+p355
+S"<class 'gluon.html.UL'>"
+p356
+sS'IS_UPPER'
+p357
+S"<class 'gluon.validators.IS_UPPER'>"
+p358
+sS'xmlescape'
+p359
+S'<function xmlescape>'
+p360
+sS'Query'
+p361
+S"<class 'gluon.dal.Query'>"
+p362
+sS'IS_TIME'
+p363
+S"<class 'gluon.validators.IS_TIME'>"
+p364
+sS'plugin_powerTable'
+p365
+S'<function plugin_powerTable>'
+p366
+sS'Row'
+p367
+S"<class 'gluon.dal.Row'>"
+p368
+sS'OPTION'
+p369
+S"<class 'gluon.html.OPTION'>"
+p370
+sS'TITLE'
+p371
+S"<class 'gluon.html.TITLE'>"
+p372
+sS'CRYPT'
+p373
+S"<class 'gluon.validators.CRYPT'>"
+p374
+sS'IS_EMPTY_OR'
+p375
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p376
+sS'MARKMIN'
+p377
+S"<class 'gluon.html.MARKMIN'>"
+p378
+sS'service'
+p379
+S'<gluon.tools.Service object>'
+p380
+sS'SCRIPT'
+p381
+S"<class 'gluon.html.SCRIPT'>"
+p382
+sS'geocode'
+p383
+S'<function geocode>'
+p384
+sS'TABLE'
+p385
+S"<class 'gluon.html.TABLE'>"
+p386
+sS'IS_IPV4'
+p387
+S"<class 'gluon.validators.IS_IPV4'>"
+p388
+sS'IS_LENGTH'
+p389
+S"<class 'gluon.validators.IS_LENGTH'>"
+p390
+sS'XML'
+p391
+S"<class 'gluon.html.XML'>"
+p392
+sS'B'
+S"<class 'gluon.html.B'>"
+p393
+sS'IMG'
+p394
+S"<class 'gluon.html.IMG'>"
+p395
+sS'SQLTABLE'
+p396
+S"<class 'gluon.sqlhtml.SQLTABLE'>"
+p397
+sS'IS_MATCH'
+p398
+S"<class 'gluon.validators.IS_MATCH'>"
+p399
+sS'xxx'
+p400
+S'"function( nRow, aData, iDisplayIndex ) {\\nif ( jQ...(nRow).addClass(\'row_selected\');\\n}\\nreturn nRow\\n;}"'
+p401
+sS'IS_ALPHANUMERIC'
+p402
+S"<class 'gluon.validators.IS_ALPHANUMERIC'>"
+p403
+sS'Set'
+p404
+S"<class 'gluon.dal.Set'>"
+p405
+sS'SPAN'
+p406
+S"<class 'gluon.html.SPAN'>"
+p407
+sS'IS_SLUG'
+p408
+S"<class 'gluon.validators.IS_SLUG'>"
+p409
+sS'CLEANUP'
+p410
+S"<class 'gluon.validators.CLEANUP'>"
+p411
+sS'fetch'
+p412
+S'<function fetch>'
+p413
+sS'Rows'
+p414
+S"<class 'gluon.dal.Rows'>"
+p415
+sS'IS_DATE'
+p416
+S"<class 'gluon.validators.IS_DATE'>"
+p417
+sS'IS_EMAIL'
+p418
+S"<class 'gluon.validators.IS_EMAIL'>"
+p419
+sS'IS_NOT_EMPTY'
+p420
+S"<class 'gluon.validators.IS_NOT_EMPTY'>"
+p421
+sg55
+S"<Storage {'function': 'index', 'body': <cStringI... 23, 36, 58, 568962), 'post_vars': <Storage {}>}>"
+p422
+sS'BEAUTIFY'
+p423
+S"<class 'gluon.html.BEAUTIFY'>"
+p424
+sS'TBODY'
+p425
+S"<class 'gluon.html.TBODY'>"
+p426
+sS'Field'
+p427
+S"<class 'gluon.dal.Field'>"
+p428
+sS'Mail'
+p429
+S"<class 'gluon.tools.Mail'>"
+p430
+sS'DIV'
+p431
+S"<class 'gluon.html.DIV'>"
+p432
+sS'LEGEND'
+p433
+S"<class 'gluon.html.LEGEND'>"
+p434
+sS'DAL'
+p435
+S"<class 'gluon.dal.DAL'>"
+p436
+sS'TT'
+p437
+S"<class 'gluon.html.TT'>"
+p438
+sS'TR'
+p439
+S"<class 'gluon.html.TR'>"
+p440
+sS'LI'
+p441
+S"<class 'gluon.html.LI'>"
+p442
+sS'capitalizefieldname'
+p443
+S'<function capitalizefieldname>'
+p444
+sS'IFRAME'
+p445
+S"<class 'gluon.html.IFRAME'>"
+p446
+sS'TD'
+p447
+S"<class 'gluon.html.TD'>"
+p448
+sS'PluginManager'
+p449
+S"<class 'gluon.tools.PluginManager'>"
+p450
+sS'IS_URL'
+p451
+S"<class 'gluon.validators.IS_URL'>"
+p452
+sS'plugin_datatable_include'
+p453
+S'<function plugin_datatable_include>'
+p454
+sS'A'
+S"<class 'gluon.html.A'>"
+p455
+sS'STYLE'
+p456
+S"<class 'gluon.html.STYLE'>"
+p457
+sS'IS_DATETIME_IN_RANGE'
+p458
+S"<class 'gluon.validators.IS_DATETIME_IN_RANGE'>"
+p459
+sS'HTML'
+p460
+S"<class 'gluon.html.HTML'>"
+p461
+sS'FORM'
+p462
+S"<class 'gluon.html.FORM'>"
+p463
+sS'I'
+S"<class 'gluon.html.I'>"
+p464
+sS'crud'
+p465
+S'<gluon.tools.Crud object>'
+p466
+sS'virtualsettings'
+p467
+S'<function virtualsettings>'
+p468
+sS'IS_NOT_IN_DB'
+p469
+S"<class 'gluon.validators.IS_NOT_IN_DB'>"
+p470
+sS'fnRowCallback'
+p471
+S"''"
+p472
+sg163
+S"<Storage {'status': 200, 'body': <cStringIO.Stri...object at 0x33adb50>], '_custom_rollback': None}>"
+p473
+sS'THEAD'
+p474
+S"<class 'gluon.html.THEAD'>"
+p475
+sS'IS_NULL_OR'
+p476
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p477
+sS'IS_FLOAT_IN_RANGE'
+p478
+S"<class 'gluon.validators.IS_FLOAT_IN_RANGE'>"
+p479
+sS'IS_EXPR'
+p480
+S"<class 'gluon.validators.IS_EXPR'>"
+p481
+sS'T'
+S'<gluon.languages.translator object>'
+p482
+sS'IS_IN_SET'
+p483
+S"<class 'gluon.validators.IS_IN_SET'>"
+p484
+sS'getfakerow'
+p485
+S'<function getfakerow>'
+p486
+sS'IS_UPLOAD_FILENAME'
+p487
+S"<class 'gluon.validators.IS_UPLOAD_FILENAME'>"
+p488
+sS'Table'
+p489
+S"<class 'gluon.dal.Table'>"
+p490
+sS're'
+p491
+S"<module 're' from '/usr/lib/python2.6/re.pyc'>"
+p492
+sS'IS_DECIMAL_IN_RANGE'
+p493
+S"<class 'gluon.validators.IS_DECIMAL_IN_RANGE'>"
+p494
+sssS'traceback'
+p495
+S'Traceback (most recent call last):\n  File "/media/DADOS/Projetos/web2py/gluon/restricted.py", line 188, in restricted\n    exec ccode in environment\n  File "/media/DADOS/Projetos/web2py/applications/marcado/views/agenda/index.html", line 102, in <module>\nNameError: name \'args\' is not defined\n'
+p496
+s.

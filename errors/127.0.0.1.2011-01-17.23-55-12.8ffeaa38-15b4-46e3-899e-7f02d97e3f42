@@ -1,0 +1,547 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/media/DADOS/Projetos/web2py/applications/marcado/controllers/agenda.py'
+p4
+sS'code'
+p5
+S'# coding: utf8\n\ndef index():\n    return dict()\n\n@service.json\ndef dados_agenda():\n    # Consultando os servicos do usuario logado\n    query = db.agenda.id > 0 and db.agenda.funcionario == session.auth.user.id and db.agenda.cliente == db.cliente.id\n    agenda = db(query).select(orderby = db.agenda.data)\n    \n    #for ag in agenda:\n    #    results = dict()\n    #    results["id"] = ag.agenda.id\n    #    results["title"] = ag.cliente.nome\n    #    results["start"] = ag.agenda.data\n    #return results\n    return [ag.agenda.id,ag.cliente.nome,ag.agenda.data]\n    \n\n\ndef novo():\n    return dict(form = crud.create(db.agenda))\n\nresponse._vars=response._caller(dados_agenda)\n'
+p6
+sS'snapshot'
+p7
+(dp8
+S'exception'
+p9
+(dp10
+S'__hash__'
+p11
+S"<method-wrapper '__hash__' of exceptions.NameError object>"
+p12
+sS'__setattr__'
+p13
+S"<method-wrapper '__setattr__' of exceptions.NameError object>"
+p14
+sS'__reduce_ex__'
+p15
+S'<built-in method __reduce_ex__ of exceptions.NameError object>'
+p16
+sS'__getslice__'
+p17
+S"<method-wrapper '__getslice__' of exceptions.NameError object>"
+p18
+sS'__getitem__'
+p19
+S"<method-wrapper '__getitem__' of exceptions.NameError object>"
+p20
+sS'__setstate__'
+p21
+S'<built-in method __setstate__ of exceptions.NameError object>'
+p22
+sS'args'
+p23
+S'("global name \'ag\' is not defined",)'
+p24
+sS'__reduce__'
+p25
+S'<built-in method __reduce__ of exceptions.NameError object>'
+p26
+sS'__str__'
+p27
+S"<method-wrapper '__str__' of exceptions.NameError object>"
+p28
+sS'__format__'
+p29
+S'<built-in method __format__ of exceptions.NameError object>'
+p30
+sS'__getattribute__'
+p31
+S"<method-wrapper '__getattribute__' of exceptions.NameError object>"
+p32
+sS'__class__'
+p33
+S"<type 'exceptions.NameError'>"
+p34
+sS'__unicode__'
+p35
+S'<built-in method __unicode__ of exceptions.NameError object>'
+p36
+sS'__delattr__'
+p37
+S"<method-wrapper '__delattr__' of exceptions.NameError object>"
+p38
+sS'__subclasshook__'
+p39
+S'<built-in method __subclasshook__ of type object>'
+p40
+sS'__repr__'
+p41
+S"<method-wrapper '__repr__' of exceptions.NameError object>"
+p42
+sS'__dict__'
+p43
+S'{}'
+p44
+sS'__sizeof__'
+p45
+S'<built-in method __sizeof__ of exceptions.NameError object>'
+p46
+sS'__doc__'
+p47
+S"'Name not found globally.'"
+p48
+sS'__init__'
+p49
+S"<method-wrapper '__init__' of exceptions.NameError object>"
+p50
+sS'__new__'
+p51
+S'<built-in method __new__ of type object>'
+p52
+ssS'evalue'
+p53
+S"global name 'ag' is not defined"
+p54
+sS'request'
+p55
+(dp56
+S'function'
+p57
+S"'dados_agenda'"
+p58
+sS'body'
+p59
+S'<cStringIO.StringO object>'
+p60
+sS'wsgi'
+p61
+S"<Storage {'start_response': <function <lambda> a...>, 'HTTP_ACCEPT_ENCODING': 'gzip,deflate,sdch'}}>"
+p62
+sS'extension'
+p63
+S"'html'"
+p64
+sS'vars'
+p65
+S'<Storage {}>'
+p66
+sS'cid'
+p67
+S'None'
+p68
+sS'url'
+p69
+S'<gluon.html.XML object>'
+p70
+sS'raw_extension'
+p71
+S'None'
+p72
+sg23
+S'[]'
+p73
+sS'controller'
+p74
+S"'agenda'"
+p75
+sS'cookies'
+p76
+S"<SimpleCookie: session_id_admin='127.0.0.1-04483...'127.0.0.1-95e908f2-dd4f-4ff1-8538-8f3335ccc46d'>"
+p77
+sS'application'
+p78
+S"'marcado'"
+p79
+sS'ajax'
+p80
+S'False'
+p81
+sS'client'
+p82
+S"'127.0.0.1'"
+p83
+sS'env'
+p84
+S"<Storage {'wsgi_multithread': True, 'http_accept... 'wsgi_run_once': False, 'remote_port': '45738'}>"
+p85
+sS'raw_args'
+p86
+S'None'
+p87
+sS'get_vars'
+p88
+S'<Storage {}>'
+p89
+sS'folder'
+p90
+S"'/media/DADOS/Projetos/web2py/applications/marcado/'"
+p91
+sS'now'
+p92
+S'datetime.datetime(2011, 1, 17, 23, 55, 12, 35489)'
+p93
+sS'post_vars'
+p94
+S'<Storage {}>'
+p95
+ssS'frames'
+p96
+(lp97
+(dp98
+S'file'
+p99
+S'/media/DADOS/Projetos/web2py/gluon/restricted.py'
+p100
+sS'dump'
+p101
+(dp102
+S'environment'
+p103
+S"{'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}"
+p104
+sS'ccode'
+p105
+S'<code object <module> at 0x3e35210, file "/media...lications/marcado/controllers/agenda.py", line 3>'
+p106
+ssS'lnum'
+p107
+I188
+sS'lines'
+p108
+(dp109
+I192
+S'        # XXX Show exception in Wing IDE if running in debugger'
+p110
+sI183
+S'        if type(code) == types.CodeType:'
+p111
+sI184
+S'            ccode = code'
+p112
+sI185
+S'        else:'
+p113
+sI186
+S'            ccode = compile2(code,layer)'
+p114
+sI187
+S''
+sI188
+S'        exec ccode in environment'
+p115
+sI189
+S'    except HTTP:'
+p116
+sI190
+S'        raise'
+p117
+sI191
+S'    except Exception:'
+p118
+ssS'call'
+p119
+S"(code='# coding: utf8\\n\\ndef index():\\n    return dict()\\n\\n...)\\n\\nresponse._vars=response._caller(dados_agenda)\\n', environment={'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}, layer='/media/DADOS/Projetos/web2py/applications/marcado/controllers/agenda.py')"
+p120
+sS'func'
+p121
+S'restricted'
+p122
+sa(dp123
+g99
+S'/media/DADOS/Projetos/web2py/applications/marcado/controllers/agenda.py'
+p124
+sg101
+(dp125
+sg107
+I25
+sg108
+(dp126
+I14
+S'    #    results["id"] = ag.agenda.id'
+p127
+sI15
+S'    #    results["title"] = ag.cliente.nome'
+p128
+sI16
+S'    #    results["start"] = ag.agenda.data'
+p129
+sI17
+S'    #return results'
+p130
+sI18
+S'    return [ag.agenda.id,ag.cliente.nome,ag.agenda.data]'
+p131
+sI19
+S''
+sI20
+S''
+sI21
+S''
+sI22
+S'def novo():'
+p132
+sI23
+S'    return dict(form = crud.create(db.agenda))'
+p133
+ssg119
+S'()'
+p134
+sg121
+S'<module>'
+p135
+sa(dp136
+g99
+S'/media/DADOS/Projetos/web2py/gluon/globals.py'
+p137
+sg101
+(dp138
+S'self'
+p139
+S'undefined'
+p140
+sS'f'
+S'<function dados_agenda>'
+p141
+ssg107
+I95
+sg108
+(dp142
+I96
+S'        self._view_environment = None'
+p143
+sI97
+S'        self._custom_commit = None'
+p144
+sI98
+S'        self._custom_rollback = None'
+p145
+sI99
+S''
+sI90
+S"        self.flash = ''           # used by the default view layout"
+p146
+sI91
+S'        self.meta = Storage()     # used by web2py_ajax.html'
+p147
+sI92
+S'        self.menu = []            # used by the default view layout'
+p148
+sI93
+S'        self.files = []           # used by web2py_ajax.html'
+p149
+sI94
+S'        self._vars = None'
+p150
+sI95
+S'        self._caller = lambda f: f()'
+p151
+ssg119
+S'(f=<function dados_agenda>)'
+p152
+sg121
+S'<lambda>'
+p153
+sa(dp154
+g99
+S'/media/DADOS/Projetos/web2py/applications/marcado/controllers/agenda.py'
+p155
+sg101
+(dp156
+S'ag'
+p157
+g140
+ssg107
+I18
+sg108
+(dp158
+I13
+S'    #    results = dict()'
+p159
+sI14
+S'    #    results["id"] = ag.agenda.id'
+p160
+sI15
+S'    #    results["title"] = ag.cliente.nome'
+p161
+sI16
+S'    #    results["start"] = ag.agenda.data'
+p162
+sI17
+S'    #return results'
+p163
+sI18
+S'    return [ag.agenda.id,ag.cliente.nome,ag.agenda.data]'
+p164
+sI19
+S''
+sI20
+S''
+sI21
+S''
+sI22
+S'def novo():'
+p165
+ssg119
+S'()'
+p166
+sg121
+S'dados_agenda'
+p167
+sasS'pyver'
+p168
+S'Python 2.6.6: /usr/bin/python'
+p169
+sS'session'
+p170
+(dp171
+S'_formkey[cliente/None]'
+p172
+S"'2090ebbe-ff4d-45c8-a445-2f0ed31f7924'"
+p173
+sS'last_query'
+p174
+S"'db.agenda.id > 0 and db.agenda.funcionario == se...th.user.id and db.agenda.cliente == db.cliente.id'"
+p175
+sS'_formkey[agenda_create]'
+p176
+S"'9315ed81-eaab-47fd-a28f-82c9a735cfef'"
+p177
+sS'flash'
+p178
+S'None'
+p179
+sS'last_orderby'
+p180
+S'None'
+p181
+sS'auth'
+p182
+S"<Storage {'expiration': 3600, 'user': <Storage {...1, 1, 17, 23, 55, 12, 35489), 'remember': False}>"
+p183
+sS'_formkey[agenda/None]'
+p184
+S"'4e401505-9e54-4d9b-b9f6-74f14558681f'"
+p185
+sS'_formkey[auth_user_create]'
+p186
+S"'5080b08a-b13e-47a9-8ca5-893fec7c03cb'"
+p187
+sS'_formkey[servicos/None]'
+p188
+S"'e97ed043-4266-4eef-a601-5b717e787219'"
+p189
+sS'_formkey[login]'
+p190
+S"'a5c9a5b5-bb97-4d57-a0da-6f893b490ffa'"
+p191
+sS'_formkey[cliente_1]'
+p192
+S"'a143a046-dce6-4642-8bc6-e56d01b2f4d4'"
+p193
+ssS'etype'
+p194
+S"<type 'exceptions.NameError'>"
+p195
+sS'date'
+p196
+S'Mon Jan 17 23:55:12 2011'
+p197
+sS'response'
+p198
+(dp199
+S'status'
+p200
+S'200'
+p201
+sg59
+S'<cStringIO.StringO object>'
+p202
+sg76
+S"<SimpleCookie: session_id_marcado='127.0.0.1-5cd82eda-12da-45b8-807e-87dd160ceafb'>"
+p203
+sS'_vars'
+p204
+S'None'
+p205
+sS'title'
+p206
+S"'Marcado!'"
+p207
+sS'session_file'
+p208
+S"<open file '/media/DADOS/Projetos/web2py/applica...cd82eda-12da-45b8-807e-87dd160ceafb', mode 'rb+'>"
+p209
+sS'flash'
+p210
+S"''"
+p211
+sS'_custom_rollback'
+p212
+S'None'
+p213
+sS'session_id'
+p214
+S"'127.0.0.1-5cd82eda-12da-45b8-807e-87dd160ceafb'"
+p215
+sS'headers'
+p216
+S"<Storage {'Expires': 'Tue, 18 Jan 2011 01:55:12 ...he, must-revalidate, post-check=0, pre-check=0'}>"
+p217
+sS'meta'
+p218
+S"<Storage {'keywords': 'web2py, python, framework...Enterprise Framework', 'author': 'Gilson Filho'}>"
+p219
+sS'session_filename'
+p220
+S"'/media/DADOS/Projetos/web2py/applications/marcad...ns/127.0.0.1-5cd82eda-12da-45b8-807e-87dd160ceafb'"
+p221
+sS'postprocessing'
+p222
+S'[]'
+p223
+sS'menu'
+p224
+S"[(<lazyT 'Home'>, False, <gluon.html.XML object>, []), (<lazyT 'This App'>, False, <gluon.html.XML object>, [(<lazyT 'Controller'>, False, <gluon.html.XML object>), (<lazyT 'View'>, False, <gluon.html.XML object>), (<lazyT 'Layout'>, False, <gluon.html.XML object>), (<lazyT 'Stylesheet'>, False, <gluon.html.XML object>), (<lazyT 'DB Model'>, False, <gluon.html.XML object>), (<lazyT 'Menu Model'>, False, <gluon.html.XML object>), (<lazyT 'Database'>, False, <gluon.html.XML object>), (<lazyT 'Errors'>, False, <gluon.html.XML object>), (<lazyT 'About'>, False, <gluon.html.XML object>)]), (<lazyT 'Resources'>, False, None, [(<lazyT 'Documentation'>, False, 'http://www.web2py.com/book', [(<lazyT 'Preface'>, False, 'http://www.web2py.com/book/default/chapter/00'), (<lazyT 'Introduction'>, False, 'http://www.web2py.com/book/default/chapter/01'), (<lazyT 'Python'>, False, 'http://www.web2py.com/book/default/chapter/02'), (<lazyT 'Overview'>, False, 'http://www.web2py.com/book/default/chapter/03'), (<lazyT 'The Core'>, False, 'http://www.web2py.com/book/default/chapter/04'), (<lazyT 'The Views'>, False, 'http://www.web2py.com/book/default/chapter/05'), (<lazyT 'Database'>, False, 'http://www.web2py.com/book/default/chapter/06'), (<lazyT 'Forms and Validators'>, False, 'http://www.web2py.com/book/default/chapter/07'), (<lazyT 'Access Control'>, False, 'http://www.web2py.com/book/default/chapter/08'), (<lazyT 'Services'>, False, 'http://www.web2py.com/book/default/chapter/09'), (<lazyT 'Ajax Recipes'>, False, 'http://www.web2py.com/book/default/chapter/10'), (<lazyT 'Deployment Recipes'>, False, 'http://www.web2py.com/book/default/chapter/11'), (<lazyT 'Other Recipes'>, False, 'http://www.web2py.com/book/default/chapter/12'), (<lazyT 'Buy this book'>, False, 'http://stores.lulu.com/web2py')]), (<lazyT 'Community'>, False, None, [(<lazyT 'Groups'>, False, 'http://www.web2py.com/examples/default/usergroups'), (<lazyT 'Twitter'>, False, 'http://twitter.com/web2py'), (<lazyT 'Live chat'>, False, 'http://mibbit.com/?channel=%23web2py&server=irc.mibbit.net'), (<lazyT 'User Voice'>, False, 'http://web2py.uservoice.com/')]), (<lazyT 'Web2py'>, False, 'http://www.web2py.com', [(<lazyT 'Download'>, False, 'http://www.web2py.com/examples/default/download'), (<lazyT 'Support'>, False, 'http://www.web2py.com/examples/default/support'), (<lazyT 'Quick Examples'>, False, 'http://web2py.com/examples/default/examples'), (<lazyT 'FAQ'>, False, 'http://web2py.com/AlterEgo'), (<lazyT 'Free Applications'>, False, 'http://web2py.com/appliances'), (<lazyT 'Plugins'>, False, 'http://web2py.com/plugins'), (<lazyT 'Recipes'>, False, 'http://web2pyslices.com/'), (<lazyT 'Demo'>, False, 'http://web2py.com/demo_admin'), (<lazyT 'Semantic'>, False, 'http://web2py.com/semantic'), (<lazyT 'Layouts'>, False, 'http://web2py.com/layouts'), (<lazyT 'Videos'>, False, 'http://www.web2py.com/examples/default/videos/')])])]"
+p225
+sS'_view_environment'
+p226
+S"{'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}"
+p227
+sS'session_id_name'
+p228
+S"'session_id_marcado'"
+p229
+sS'_custom_commit'
+p230
+S'None'
+p231
+sS'_caller'
+p232
+S'<function <lambda>>'
+p233
+sS'files'
+p234
+S'[]'
+p235
+sS'view'
+p236
+S"'agenda/dados_agenda.html'"
+p237
+ssS'locals'
+p238
+(dp239
+S'query'
+p240
+S'<gluon.dal.Query object>'
+p241
+sS'agenda'
+p242
+S'<gluon.dal.Rows object>'
+p243
+sssS'traceback'
+p244
+S'Traceback (most recent call last):\n  File "/media/DADOS/Projetos/web2py/gluon/restricted.py", line 188, in restricted\n    exec ccode in environment\n  File "/media/DADOS/Projetos/web2py/applications/marcado/controllers/agenda.py", line 25, in <module>\n  File "/media/DADOS/Projetos/web2py/gluon/globals.py", line 95, in <lambda>\n    self._caller = lambda f: f()\n  File "/media/DADOS/Projetos/web2py/applications/marcado/controllers/agenda.py", line 18, in dados_agenda\n    return [ag.agenda.id,ag.cliente.nome,ag.agenda.data]\nNameError: global name \'ag\' is not defined\n'
+p245
+s.

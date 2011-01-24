@@ -1,0 +1,478 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/opt/web2py/applications/marcado/models/agenda.py'
+p4
+sS'code'
+p5
+S'# coding: utf8\nimport datetime\n\n"""\n###################################################################################\n##                            Tabela de Funcionarios\n##  Esse cadastro e usado para inserir os dados do funcionario\n##  como tambem para acessar o sistema.\n###################################################################################\n"""\n\ndb.define_table(\n    auth.settings.table_user_name,\n    Field(\'name\', length=128, default=\'\'),\n    Field(\'username\', length = 128, default = \'\', unique = True),\n    Field(\'email\', length=128, default=\'\'),\n    Field(\'password\', \'password\', length=512,\n          readable=False, label=\'Password\'),\n    Field(\'endereco\', notnull = True),\n    Field(\'telefone\', notnull = True),\n    Field(\'aniversario\', \'date\', notnull = True, default=request.now),\n    Field(\'registration_key\', length=512,\n          writable=False, readable=False, default=\'\'),\n    Field(\'reset_password_key\', length=512,\n          writable=False, readable=False, default=\'\'),\n    Field(\'registration_id\', length=512,\n          writable=False, readable=False, default=\'\'))\n\ncustom_auth_table = db[auth.settings.table_user_name] # get the custom_auth_table\ncustom_auth_table.name.requires = IS_NOT_EMPTY(error_message= T(\'is_empty\'))\ncustom_auth_table.username.requires = [\n            IS_NOT_EMPTY(error_message = T(\'is_empty\')),\n            IS_NOT_IN_DB(db, custom_auth_table.username)\n]\ncustom_auth_table.password.requires = [\n            # Especifica a complexidade da senha\n            IS_STRONG(min = 6, special = 0, upper = 0),\n            CRYPT()]\ncustom_auth_table.email.requires = [\n            IS_EMAIL(error_message=auth.messages.invalid_email)]\n\ncustom_auth_table.endereco.requires = IS_NOT_EMPTY(error_message = T(\'is_empty\'))\ncustom_auth_table.telefone.requires = IS_NOT_EMPTY(error_message = T(\'is_empty\'))\ncustom_auth_table.aniversario.requires = [\n            IS_NOT_EMPTY(error_message = T(\'is_empty\')),\n            IS_DATE_IN_RANGE(minimum = datetime.date(1900,1,1),\n            maximum = datetime.date(9999,12,31),\n            format=T(\'%d/%m/%Y\'),\n            error_message = \'O formato deve ser 00/00/0000\')\n        ]\n\n# Definindo os rotulos dos campos OBS.: Alterar o rotulo e inserir a mensagem no pt-br.py\ncustom_auth_table.name.label = T(\'nome_funcionario\')\ncustom_auth_table.username.label = T(\'login\')\ncustom_auth_table.email.label = T(\'email\')\ncustom_auth_table.password.label = T(\'senha\')\ncustom_auth_table.endereco.label = T(\'endereco\')\ncustom_auth_table.telefone.label = T(\'telefone\')\n\nauth.settings.table_user = custom_auth_table # tell auth to use custom_auth_table\n\n# before\nauth.define_tables(username = True)\n\n"""\n###################################################################################\n##                            Tabela de Clientes\n##  Esse cadastro e usado para inserir os dados do cliente\n##  para ser usado na agenda.\n###################################################################################\n"""\n\ndb.define_table(\'cliente\',\n            Field(\'nome\',unique=True,notnull=True),\n            Field(\'endereco\',notnull=True),\n            Field(\'telefone\',notnull=True),\n            Field(\'email\',notnull=True),\n            Field(\'aniversario\',\'date\',notnull=True, default=request.now)\n            )\n\n# Validando os campos\ndb.cliente.nome.requires = [\n            IS_NOT_EMPTY(error_message = T(\'empty\')),\n            IS_NOT_IN_DB(db, \'cliente.nome\', error_message = T(\'is_not_db\'))\n        ]\ndb.cliente.endereco.requires = [\n            IS_NOT_EMPTY(error_message = T(\'empty\'))\n        ]\ndb.cliente.telefone.requires = [\n            IS_NOT_EMPTY(error_message = T(\'empty\'))\n]\ndb.cliente.email.requires = [\n            IS_NOT_EMPTY(error_message = T(\'empty\')),\n            IS_EMAIL(error_message = T(\'is_email\'))\n        ]        \ndb.cliente.aniversario.requires = [\n            IS_NOT_EMPTY(error_message = T(\'empty\')),\n            IS_DATE_IN_RANGE(minimum = datetime.date(1900,1,1),\n            maximum = datetime.date(9999,12,31),\n            format=T(\'%d/%m/%Y\'),\n            error_message = \'O formato deve ser 00/00/0000\')\n        ]\n        \n"""\n###################################################################################\n##                            Tabela de Servi\xc3\xa7os\n##  Esse cadastro e usado para cadastrar os servi\xc3\xa7os usados no comerio.\n##\n###################################################################################\n"""        \n        \ndb.define_table(\'servicos\',\n        Field(\'servico\', unique = True, notnull = True, default = \'\'),\n        Field(\'preco\',\'decimal(3,2)\'),\n        Field(\'observacoes\',\'text\', length = 150)\n    )\n    \n# Validando os campos\ndb.servicos.servico.requires = [\n            IS_NOT_EMPTY(error_message = T(\'is_empty\')),\n            IS_NOT_IN_DB(db, \'servicos.servico\', error_message = T(\'is_not_db\'))\n    ]\ndb.servicos.preco.requires = IS_NOT_EMPTY(error_message = T(\'is_empty\'))\ndb.servicos.observacoes.requires = IS_LENGTH(150, error_message = T(\'is_max\'))\n\n# Inserindo os rotulos\ndb.servicos.servico.label = T(\'servico\')\ndb.servicos.preco.label = T(\'preco\')\ndb.servicos.observacoes.label = T(\'observacoes\')        \n        \n        \n"""\n###################################################################################\n##                            Tabela de Agenda\n##  Esse cadastro e usado para inserir a agenda dos clientes\n##  relacionado a cada funcionario.\n###################################################################################\n"""        \n        \ndb.define_table(\'agenda\',\n        Field(\'funcionario\',\'list:reference auth_user\' , notnull = True),\n        Field(\'cliente\',\'list:reference cliente\', notnull = True),\n        Field(\'tipo_servico\', \'list:reference servicos\', notnull = True),\n        Field(\'data\', \'date\', notnull = True, default = request.now),\n        Field(\'hora\', \'time\', notnull = True),\n        Field(\'observacoes\',\'text\', length = 200)\n    )\n        \n# Validando os campos da tabela Agenda\ndb.agenda.funcionario.requires = IS_IN_DB(db, \'auth_user.id\', \'auth_user.name\', zero=\'-- Escolha um funcion\xc3\xa1rio --\')\ndb.agenda.cliente.requires = IS_IN_DB(db, \'cliente.id\', \'cliente.nome\', zero=\'-- Escolha um cliente --\')\ndb.agenda.tipo_servico.requires = IS_IN_DB(db, \'servicos.id\', \'servicos.servico\', zero=\'-- Escolha um servico --\')\ndb.agenda.observacoes.requires = IS_LENGTH(200, error_message = T(\'is_max\'))\ndb.agenda.data.requires = [IS_NOT_EMPTY(error_message = T(\'is_empty\')),\n            IS_DATE_IN_RANGE(minimum = datetime.date(1900,1,1),\n            maximum = datetime.date(9999,12,31),\n            format=T(\'%d/%m/%Y\')] \n\n# Rotulando os campos\ndb.agenda.funcionario.label = T(\'nome_funcionario\')\ndb.agenda.tipo_servico.label= T(\'servico\')\ndb.agenda.observacoes.label = T(\'observacoes\')\n'
+p6
+sS'snapshot'
+p7
+(dp8
+S'exception'
+p9
+(dp10
+S'__getslice__'
+p11
+S"<method-wrapper '__getslice__' of exceptions.SyntaxError object>"
+p12
+sS'text'
+p13
+S'"            format=T(\'%d/%m/%Y\')] \\n"'
+p14
+sS'__str__'
+p15
+S"<method-wrapper '__str__' of exceptions.SyntaxError object>"
+p16
+sS'__reduce__'
+p17
+S'<built-in method __reduce__ of exceptions.SyntaxError object>'
+p18
+sS'__dict__'
+p19
+S'{}'
+p20
+sS'__sizeof__'
+p21
+S'<built-in method __sizeof__ of exceptions.SyntaxError object>'
+p22
+sS'__init__'
+p23
+S"<method-wrapper '__init__' of exceptions.SyntaxError object>"
+p24
+sS'__setattr__'
+p25
+S"<method-wrapper '__setattr__' of exceptions.SyntaxError object>"
+p26
+sS'__reduce_ex__'
+p27
+S'<built-in method __reduce_ex__ of exceptions.SyntaxError object>'
+p28
+sS'__new__'
+p29
+S'<built-in method __new__ of type object>'
+p30
+sS'__format__'
+p31
+S'<built-in method __format__ of exceptions.SyntaxError object>'
+p32
+sS'__class__'
+p33
+S"<type 'exceptions.SyntaxError'>"
+p34
+sS'filename'
+p35
+S"'/opt/web2py/applications/marcado/models/agenda.py'"
+p36
+sS'lineno'
+p37
+S'157'
+p38
+sS'msg'
+p39
+S"'invalid syntax'"
+p40
+sS'__doc__'
+p41
+S"'Invalid syntax.'"
+p42
+sS'__getitem__'
+p43
+S"<method-wrapper '__getitem__' of exceptions.SyntaxError object>"
+p44
+sS'__setstate__'
+p45
+S'<built-in method __setstate__ of exceptions.SyntaxError object>'
+p46
+sS'__getattribute__'
+p47
+S"<method-wrapper '__getattribute__' of exceptions.SyntaxError object>"
+p48
+sS'print_file_and_line'
+p49
+S'None'
+p50
+sS'args'
+p51
+S'(\'invalid syntax\', (\'/opt/web2py/applications/marcado/models/agenda.py\', 157, 33, "            format=T(\'%d/%m/%Y\')] \\n"))'
+p52
+sS'__subclasshook__'
+p53
+S'<built-in method __subclasshook__ of type object>'
+p54
+sS'offset'
+p55
+S'33'
+p56
+sS'__unicode__'
+p57
+S'<built-in method __unicode__ of exceptions.SyntaxError object>'
+p58
+sS'__delattr__'
+p59
+S"<method-wrapper '__delattr__' of exceptions.SyntaxError object>"
+p60
+sS'__repr__'
+p61
+S"<method-wrapper '__repr__' of exceptions.SyntaxError object>"
+p62
+sS'__hash__'
+p63
+S"<method-wrapper '__hash__' of exceptions.SyntaxError object>"
+p64
+ssS'evalue'
+p65
+S'invalid syntax (agenda.py, line 157)'
+p66
+sS'request'
+p67
+(dp68
+S'function'
+p69
+S"'novo'"
+p70
+sS'body'
+p71
+S'<cStringIO.StringO object>'
+p72
+sS'wsgi'
+p73
+S"<Storage {'start_response': <function <lambda> a...>, 'HTTP_ACCEPT_ENCODING': 'gzip,deflate,sdch'}}>"
+p74
+sS'extension'
+p75
+S"'html'"
+p76
+sS'vars'
+p77
+S'<Storage {}>'
+p78
+sS'cid'
+p79
+S'None'
+p80
+sS'url'
+p81
+S'<gluon.html.XML object>'
+p82
+sS'raw_extension'
+p83
+S'None'
+p84
+sg51
+S'[]'
+p85
+sS'controller'
+p86
+S"'agenda'"
+p87
+sS'cookies'
+p88
+S"<SimpleCookie: session_id_admin='127.0.0.1-2aa55...'127.0.0.1-798c5496-a798-4b85-b471-d63da3b8f34d'>"
+p89
+sS'application'
+p90
+S"'marcado'"
+p91
+sS'ajax'
+p92
+S'False'
+p93
+sS'client'
+p94
+S"'127.0.0.1'"
+p95
+sS'env'
+p96
+S"<Storage {'wsgi_multithread': True, 'http_accept... 'wsgi_run_once': False, 'remote_port': '57133'}>"
+p97
+sS'raw_args'
+p98
+S'None'
+p99
+sS'get_vars'
+p100
+S'<Storage {}>'
+p101
+sS'folder'
+p102
+S"'/opt/web2py/applications/marcado/'"
+p103
+sS'now'
+p104
+S'datetime.datetime(2011, 1, 15, 23, 29, 5, 774785)'
+p105
+sS'post_vars'
+p106
+S'<Storage {}>'
+p107
+ssS'frames'
+p108
+(lp109
+(dp110
+S'file'
+p111
+S'/opt/web2py/gluon/restricted.py'
+p112
+sS'dump'
+p113
+(dp114
+S'code'
+p115
+S'\'# coding: utf8\\nimport datetime\\n\\n"""\\n############...)\\ndb.agenda.observacoes.label = T(\\\'observacoes\\\')\\n\''
+p116
+sS'layer'
+p117
+S"'/opt/web2py/applications/marcado/models/agenda.py'"
+p118
+sS'global compile2'
+p119
+S'<function compile2>'
+p120
+sS'ccode'
+p121
+S'undefined'
+p122
+ssS'lnum'
+p123
+I186
+sS'lines'
+p124
+(dp125
+I181
+S''
+sI182
+S'    try:'
+p126
+sI183
+S'        if type(code) == types.CodeType:'
+p127
+sI184
+S'            ccode = code'
+p128
+sI185
+S'        else:'
+p129
+sI186
+S'            ccode = compile2(code,layer)'
+p130
+sI187
+S''
+sI188
+S'        exec ccode in environment'
+p131
+sI189
+S'    except HTTP:'
+p132
+sI190
+S'        raise'
+p133
+ssS'call'
+p134
+S'(code=\'# coding: utf8\\nimport datetime\\n\\n"""\\n############...)\\ndb.agenda.observacoes.label = T(\\\'observacoes\\\')\\n\', environment={\'A\': <class \'gluon.html.A\'>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'CENTER\': <class \'gluon.html.CENTER\'>, \'CLEANUP\': <class \'gluon.validators.CLEANUP\'>, \'CODE\': <class \'gluon.html.CODE\'>, \'CRYPT\': <class \'gluon.validators.CRYPT\'>, ...}, layer=\'/opt/web2py/applications/marcado/models/agenda.py\')'
+p135
+sS'func'
+p136
+S'restricted'
+p137
+sa(dp138
+g111
+S'/opt/web2py/gluon/restricted.py'
+p139
+sg113
+(dp140
+S'builtincompile'
+p141
+S'<built-in function compile>'
+p142
+sS'code'
+p143
+S'\'# coding: utf8\\nimport datetime\\n\\n"""\\n############...)\\ndb.agenda.observacoes.label = T(\\\'observacoes\\\')\\n\''
+p144
+sS'code.rstrip'
+p145
+S'<built-in method rstrip of str object>'
+p146
+sS').replace'
+p147
+g122
+sS'layer'
+p148
+S"'/opt/web2py/applications/marcado/models/agenda.py'"
+p149
+ssg123
+I173
+sg124
+(dp150
+I168
+S''
+sI169
+S'def compile2(code,layer):'
+p151
+sI170
+S'    """'
+p152
+sI171
+S"    The +'\\n' is necessary else compile fails when code ends in a comment."
+p153
+sI172
+S'    """'
+p154
+sI173
+S"    return compile(code.rstrip().replace('\\r\\n','\\n')+'\\n', layer, 'exec')"
+p155
+sI174
+S''
+sI175
+S"def restricted(code, environment={}, layer='Unknown'):"
+p156
+sI176
+S'    """'
+p157
+sI177
+S'    runs code in environment and returns the output. if an exception occurs'
+p158
+ssg134
+S'(code=\'# coding: utf8\\nimport datetime\\n\\n"""\\n############...)\\ndb.agenda.observacoes.label = T(\\\'observacoes\\\')\\n\', layer=\'/opt/web2py/applications/marcado/models/agenda.py\')'
+p159
+sg136
+S'compile2'
+p160
+sasS'pyver'
+p161
+S'Python 2.6.6: /usr/bin/python'
+p162
+sS'session'
+p163
+(dp164
+S'_formkey[cliente/None]'
+p165
+S"'11846397-a858-4606-8e92-81e9765db52e'"
+p166
+sS'_formkey[auth_user/None]'
+p167
+S"'023cb20f-6334-4801-8762-66426b5f3211'"
+p168
+sS'flash'
+p169
+S'None'
+p170
+sS'auth'
+p171
+S"<Storage {'expiration': 3600, 'user': <Storage {...1, 1, 15, 23, 29, 5, 774785), 'remember': False}>"
+p172
+sS'_formkey[agenda/None]'
+p173
+S"'54b469f1-6208-4332-bb0a-c92419062fa6'"
+p174
+sS'_formkey[servicos/None]'
+p175
+S"'cffabbe9-267e-44ac-9d59-5f141eeb454c'"
+p176
+sS'_formkey[login]'
+p177
+S"'9f6740ac-20c5-4636-835f-9a3d3d560100'"
+p178
+ssS'etype'
+p179
+S"<type 'exceptions.SyntaxError'>"
+p180
+sS'date'
+p181
+S'Sat Jan 15 23:29:05 2011'
+p182
+sS'response'
+p183
+(dp184
+S'status'
+p185
+S'200'
+p186
+sg71
+S'<cStringIO.StringO object>'
+p187
+sg88
+S"<SimpleCookie: session_id_marcado='127.0.0.1-8e55dfe6-f3f5-4e23-8df0-168309a18c1a'>"
+p188
+sS'_vars'
+p189
+S'None'
+p190
+sS'menu'
+p191
+S'[]'
+p192
+sS'flash'
+p193
+S"''"
+p194
+sS'_custom_rollback'
+p195
+S'None'
+p196
+sS'session_id'
+p197
+S"'127.0.0.1-8e55dfe6-f3f5-4e23-8df0-168309a18c1a'"
+p198
+sS'headers'
+p199
+S"<Storage {'Expires': 'Sun, 16 Jan 2011 01:29:05 ...he, must-revalidate, post-check=0, pre-check=0'}>"
+p200
+sS'meta'
+p201
+S'<Storage {}>'
+p202
+sS'session_filename'
+p203
+S"'/opt/web2py/applications/marcado/sessions/127.0.0.1-8e55dfe6-f3f5-4e23-8df0-168309a18c1a'"
+p204
+sS'postprocessing'
+p205
+S'[]'
+p206
+sS'session_file'
+p207
+S"<open file '/opt/web2py/applications/marcado/ses...e55dfe6-f3f5-4e23-8df0-168309a18c1a', mode 'rb+'>"
+p208
+sS'_view_environment'
+p209
+S"{'A': <class 'gluon.html.A'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, 'DAL': <class 'gluon.dal.DAL'>, ...}"
+p210
+sS'session_id_name'
+p211
+S"'session_id_marcado'"
+p212
+sS'_custom_commit'
+p213
+S'None'
+p214
+sS'_caller'
+p215
+S'<function <lambda>>'
+p216
+sS'files'
+p217
+S'[]'
+p218
+sS'view'
+p219
+S"'agenda/novo.html'"
+p220
+ssS'locals'
+p221
+(dp222
+g3
+S"'/opt/web2py/applications/marcado/models/agenda.py'"
+p223
+sg5
+S'\'# coding: utf8\\nimport datetime\\n\\n"""\\n############...)\\ndb.agenda.observacoes.label = T(\\\'observacoes\\\')\\n\''
+p224
+sssS'traceback'
+p225
+S'Traceback (most recent call last):\n  File "/opt/web2py/gluon/restricted.py", line 186, in restricted\n    ccode = compile2(code,layer)\n  File "/opt/web2py/gluon/restricted.py", line 173, in compile2\n    return compile(code.rstrip().replace(\'\\r\\n\',\'\\n\')+\'\\n\', layer, \'exec\')\n  File "/opt/web2py/applications/marcado/models/agenda.py", line 157\n    format=T(\'%d/%m/%Y\')]\n                        ^\nSyntaxError: invalid syntax\n'
+p226
+s.

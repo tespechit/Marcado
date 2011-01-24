@@ -1,0 +1,587 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'/opt/web2py/applications/marcado/controllers/clientes.py'
+p4
+sS'code'
+p5
+S'# coding: utf8\n\n@auth.requires_login()\ndef index():\n    """\n        Lista todos os clientes cadastrados\n    """    \n    \n    class Virtual(object):\n        @virtualsettings(label=T(\'Edit\'))\n        def edit(self):\n            return \'\'\n\n    # Consultando todos os clientes\n    query = db.cliente.id > 0 or db.cliente.aniversario <= request.now\n    clientes = db(query).select(orderby=db.cliente.nome)\n    \n    #Preparando a tabela    \n    table = plugins.powerTable\n    table.datasource = db.cliente\n    table.uitheme = \'le-flog\'\n    table.dtfeatures[\'sPaginationType\'] = \'scrolling\'\n    table.dtfeatures[\'bJQueryUI\'] = request.vars.get(\'jqueryui\',True)\n    table.keycolumn = \'cliente.id\'  \n    table.columns = [\'cliente.nome\',\'cliente.endereco\',\'cliente.telefone\']\n    table.headers = \'labels\'\n    table.dtfeatures[\'sScrollY\'] = \'200\'\n    table.dtfeatures[\'sScrollX\'] = \'100%\'\n    table.showkeycolumn = False\n    table.truncate = 120\n    table.extra = dict(details={\'detailscolumns\':\'cliente.id,cliente.nome,cliente.endereco,cliente.telefone,cliente.email,cliente.aniversario\'})\n    table.virtualfields = Virtual()\n\n    \n    # Caso nao tiver nenhum registro mostrar mensagem\n    if clientes:\n        # Retornando os registros\n        return dict(clientes=clientes, table = table.create())        \n    else:\n        return dict(clientes = clientes, mensagem = T(\'sem_registros\'))\n\n@auth.requires_login()\ndef novo():\n    """\n        Exibe o formulario de cadastro dos clientes\n    """\n    return dict(form = crud.create(db.cliente))\n\n\n@auth.requires_login()\ndef editar():\n    """\n        Exibe o formulario de edicao com os dados\n        do cliente selecionado\n    """\n    #recupera o primeiro argumento, ou redireciona\n    id = request.args(\'cliente\') or redirect(URL(\'index\'))\n    \n    return dict(form = crud.update(db.cliente, id))\n\n@auth.requires_login()\ndef show():    \n    """\n        Exibe os detalhes do cliente selecionado\n    """\n    #recupera o primeiro argumento, ou redireciona\n    id = request.args(0) or redirect(URL(\'index\'))\n\n    # Consulta o cliente selecionado\n    query = db.cliente.id == int(id)\n    \n    return dict(cliente = db(query).select().first())\n\n@auth.requires_login()\ndef pesquisa():\n    """\n        Efetua a pesquisa dos clientes\n        a partir do seu nome\n    """\n    # Captura o valor do campo de pesquisa\n    palavra_chave = request.vars.nome\n\n    # Verifica se o campo esta vazio\n    if palavra_chave:\n        # Consulta os resultados da pesquisa\n        query = db.cliente.nome.like(\'%\'+palavra_chave+\'%\')\n        resultado = db(query or db.cliente.aniversario <= request.now).select()\n    \n        # Define qual view sera renderizada\n        response.view = \'clientes/index.html\'\n    \n        # Se encontrou alguma coisa, exibe o resultado\n        # da pesquisa, senao enviar mensagem que nao\n        # foi encontrado nada.\n        if resultado:\n            return dict(clientes = resultado)\n        else:\n            msg = T(\'nao_encontrado\')\n            return dict(clientes = resultado, mensagem = msg)\n    else:\n        # Define a view que sera renderizada\n        response.view = \'clientes/index.html\'\n    \n        # consulta todos os clientes\n        query = db.cliente.id > 0 and db.cliente.aniversario <= request.now\n        \n        # verifica se trouxe registros\n        clientes = db(query).select()\n        if clientes:\n            return dict(clientes = clientes)\n        else:\n            return dict(clientes = clientes, mensagem = T(\'sem_registros\')) \n        \n@auth.requires_login()\ndef excluir():\n    """\n        Exclui o cliente selecionado\n    """\n    #recupera o primeiro argumento, ou redireciona\n    id = request.args(0) or redirect(URL(\'index\'))\n    \n    # exclui o registro\n    cliente = db(db.cliente.id == int(id)).delete()\n\n    # Define a view que vai ser renderizada\n    response.view = \'clientes/index.html\'\n    \n    if cliente:\n        # Mostra mensagem de sucesso e redireciona para a lista de clientes\n        redirect(URL(request.application, \'clientes\',\'index\'))\n        response.flash = T(\'excluido\')\n    else:\n        redirect(URL(request.application, \'clientes\',\'index\'))\n        response.flash = T(\'excluido\')\n\nresponse._vars=response._caller(show)\n'
+p6
+sS'snapshot'
+p7
+(dp8
+S'exception'
+p9
+(dp10
+S'__hash__'
+p11
+S"<method-wrapper '__hash__' of exceptions.ValueError object>"
+p12
+sS'__setattr__'
+p13
+S"<method-wrapper '__setattr__' of exceptions.ValueError object>"
+p14
+sS'__reduce_ex__'
+p15
+S'<built-in method __reduce_ex__ of exceptions.ValueError object>'
+p16
+sS'__getslice__'
+p17
+S"<method-wrapper '__getslice__' of exceptions.ValueError object>"
+p18
+sS'__getitem__'
+p19
+S"<method-wrapper '__getitem__' of exceptions.ValueError object>"
+p20
+sS'__setstate__'
+p21
+S'<built-in method __setstate__ of exceptions.ValueError object>'
+p22
+sS'args'
+p23
+S'("invalid literal for int() with base 10: \'cliente\'",)'
+p24
+sS'__reduce__'
+p25
+S'<built-in method __reduce__ of exceptions.ValueError object>'
+p26
+sS'__str__'
+p27
+S"<method-wrapper '__str__' of exceptions.ValueError object>"
+p28
+sS'__format__'
+p29
+S'<built-in method __format__ of exceptions.ValueError object>'
+p30
+sS'__getattribute__'
+p31
+S"<method-wrapper '__getattribute__' of exceptions.ValueError object>"
+p32
+sS'__class__'
+p33
+S"<type 'exceptions.ValueError'>"
+p34
+sS'__unicode__'
+p35
+S'<built-in method __unicode__ of exceptions.ValueError object>'
+p36
+sS'__delattr__'
+p37
+S"<method-wrapper '__delattr__' of exceptions.ValueError object>"
+p38
+sS'__subclasshook__'
+p39
+S'<built-in method __subclasshook__ of type object>'
+p40
+sS'__repr__'
+p41
+S"<method-wrapper '__repr__' of exceptions.ValueError object>"
+p42
+sS'__dict__'
+p43
+S'{}'
+p44
+sS'__sizeof__'
+p45
+S'<built-in method __sizeof__ of exceptions.ValueError object>'
+p46
+sS'__doc__'
+p47
+S"'Inappropriate argument value (of correct type).'"
+p48
+sS'__init__'
+p49
+S"<method-wrapper '__init__' of exceptions.ValueError object>"
+p50
+sS'__new__'
+p51
+S'<built-in method __new__ of type object>'
+p52
+ssS'evalue'
+p53
+S"invalid literal for int() with base 10: 'cliente'"
+p54
+sS'request'
+p55
+(dp56
+S'function'
+p57
+S"'show'"
+p58
+sS'body'
+p59
+S'<cStringIO.StringO object>'
+p60
+sS'wsgi'
+p61
+S"<Storage {'start_response': <function <lambda> a...>, 'HTTP_ACCEPT_ENCODING': 'gzip,deflate,sdch'}}>"
+p62
+sS'extension'
+p63
+S"'html'"
+p64
+sS'vars'
+p65
+S'<Storage {}>'
+p66
+sS'cid'
+p67
+S'None'
+p68
+sS'url'
+p69
+S'<gluon.html.XML object>'
+p70
+sS'raw_extension'
+p71
+S'None'
+p72
+sg23
+S"['cliente', '1']"
+p73
+sS'controller'
+p74
+S"'clientes'"
+p75
+sS'cookies'
+p76
+S"<SimpleCookie: SpryMedia_DataTables_0_index='%7B...'127.0.0.1-d681126a-7638-47ec-a8c7-d0c86883c2a9'>"
+p77
+sS'application'
+p78
+S"'marcado'"
+p79
+sS'ajax'
+p80
+S'False'
+p81
+sS'client'
+p82
+S"'127.0.0.1'"
+p83
+sS'env'
+p84
+S"<Storage {'wsgi_multithread': True, 'http_accept... 'wsgi_run_once': False, 'remote_port': '40315'}>"
+p85
+sS'raw_args'
+p86
+S"'cliente/1'"
+p87
+sS'get_vars'
+p88
+S'<Storage {}>'
+p89
+sS'folder'
+p90
+S"'/opt/web2py/applications/marcado/'"
+p91
+sS'now'
+p92
+S'datetime.datetime(2011, 1, 14, 23, 2, 53, 273586)'
+p93
+sS'post_vars'
+p94
+S'<Storage {}>'
+p95
+ssS'frames'
+p96
+(lp97
+(dp98
+S'file'
+p99
+S'/opt/web2py/gluon/restricted.py'
+p100
+sS'dump'
+p101
+(dp102
+S'environment'
+p103
+S"{'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}"
+p104
+sS'ccode'
+p105
+S'<code object <module> at 0x2ed3be8, file "/opt/w...cations/marcado/controllers/clientes.py", line 3>'
+p106
+ssS'lnum'
+p107
+I188
+sS'lines'
+p108
+(dp109
+I192
+S'        # XXX Show exception in Wing IDE if running in debugger'
+p110
+sI183
+S'        if type(code) == types.CodeType:'
+p111
+sI184
+S'            ccode = code'
+p112
+sI185
+S'        else:'
+p113
+sI186
+S'            ccode = compile2(code,layer)'
+p114
+sI187
+S''
+sI188
+S'        exec ccode in environment'
+p115
+sI189
+S'    except HTTP:'
+p116
+sI190
+S'        raise'
+p117
+sI191
+S'    except Exception:'
+p118
+ssS'call'
+p119
+S'(code="# coding: utf8\\n\\n@auth.requires_login()\\ndef index...xcluido\')\\n\\nresponse._vars=response._caller(show)\\n", environment={\'A\': <class \'gluon.html.A\'>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'CENTER\': <class \'gluon.html.CENTER\'>, \'CLEANUP\': <class \'gluon.validators.CLEANUP\'>, \'CODE\': <class \'gluon.html.CODE\'>, \'CRYPT\': <class \'gluon.validators.CRYPT\'>, ...}, layer=\'/opt/web2py/applications/marcado/controllers/clientes.py\')'
+p120
+sS'func'
+p121
+S'restricted'
+p122
+sa(dp123
+g99
+S'/opt/web2py/applications/marcado/controllers/clientes.py'
+p124
+sg101
+(dp125
+sg107
+I136
+sg108
+(dp126
+I128
+S'    if cliente:'
+p127
+sI129
+S'        # Mostra mensagem de sucesso e redireciona para a lista de clientes'
+p128
+sI130
+S"        redirect(URL(request.application, 'clientes','index'))"
+p129
+sI131
+S"        response.flash = T('excluido')"
+p130
+sI132
+S'    else:'
+p131
+sI133
+S"        redirect(URL(request.application, 'clientes','index'))"
+p132
+sI134
+S"        response.flash = T('excluido')"
+p133
+sI125
+S'    # Define a view que vai ser renderizada'
+p134
+sI126
+S"    response.view = 'clientes/index.html'"
+p135
+sI127
+S''
+ssg119
+S'()'
+p136
+sg121
+S'<module>'
+p137
+sa(dp138
+g99
+S'/opt/web2py/gluon/globals.py'
+p139
+sg101
+(dp140
+S'self'
+p141
+S'undefined'
+p142
+sS'f'
+S'<function show>'
+p143
+ssg107
+I95
+sg108
+(dp144
+I96
+S'        self._view_environment = None'
+p145
+sI97
+S'        self._custom_commit = None'
+p146
+sI98
+S'        self._custom_rollback = None'
+p147
+sI99
+S''
+sI90
+S"        self.flash = ''           # used by the default view layout"
+p148
+sI91
+S'        self.meta = Storage()     # used by web2py_ajax.html'
+p149
+sI92
+S'        self.menu = []            # used by the default view layout'
+p150
+sI93
+S'        self.files = []           # used by web2py_ajax.html'
+p151
+sI94
+S'        self._vars = None'
+p152
+sI95
+S'        self._caller = lambda f: f()'
+p153
+ssg119
+S'(f=<function show>)'
+p154
+sg121
+S'<lambda>'
+p155
+sa(dp156
+g99
+S'/opt/web2py/gluon/tools.py'
+p157
+sg101
+(dp158
+S'action'
+p159
+S'<function show>'
+p160
+sS'a'
+S'()'
+p161
+sS'b'
+g44
+ssg107
+I2297
+sg108
+(dp162
+I2292
+S'                    self.environment.session.flash = self.environment.response.flash'
+p163
+sI2293
+S'                    return call_or_redirect(self.settings.on_failed_authentication,'
+p164
+sI2294
+S'                                            self.settings.login_url + \\'
+p165
+sI2295
+S"                                                '?_next='+urllib.quote(next)"
+p166
+sI2296
+S'                                            )'
+p167
+sI2297
+S'                return action(*a, **b)'
+p168
+sI2298
+S'            f.__doc__ = action.__doc__'
+p169
+sI2299
+S'            f.__name__ = action.__name__'
+p170
+sI2300
+S'            f.__dict__.update(action.__dict__)'
+p171
+sI2301
+S'            return f'
+p172
+ssg119
+S'(*a=(), **b={})'
+p173
+sg121
+S'f'
+sa(dp174
+g99
+S'/opt/web2py/applications/marcado/controllers/clientes.py'
+p175
+sg101
+(dp176
+S'db.cliente'
+p177
+S"<Table {'ALL': <gluon.dal.SQLALL object at 0x361...0>, 'id': <gluon.dal.Field object at 0x36155d0>}>"
+p178
+sS'db.cliente.id'
+p179
+S'<gluon.dal.Field object>'
+p180
+sS'global db'
+p181
+S"<DAL {'auth_permission': <Table {'ALL': <gluon.d...0x3614090>}>, '_migrate': True, '_pool_size': 0}>"
+p182
+sS'query'
+p183
+g142
+sS'builtinint'
+p184
+S"<type 'int'>"
+p185
+sS'id'
+p186
+S"'cliente'"
+p187
+ssg107
+I70
+sg108
+(dp188
+I65
+S'    """'
+p189
+sI66
+S'    #recupera o primeiro argumento, ou redireciona'
+p190
+sI67
+S"    id = request.args(0) or redirect(URL('index'))"
+p191
+sI68
+S''
+sI69
+S'    # Consulta o cliente selecionado'
+p192
+sI70
+S'    query = db.cliente.id == int(id)'
+p193
+sI71
+S''
+sI72
+S'    return dict(cliente = db(query).select().first())'
+p194
+sI73
+S''
+sI74
+S'@auth.requires_login()'
+p195
+ssg119
+S'()'
+p196
+sg121
+S'show'
+p197
+sasS'pyver'
+p198
+S'Python 2.6.6: /usr/bin/python'
+p199
+sS'session'
+p200
+(dp201
+S'flash'
+p202
+S'None'
+p203
+sS'auth'
+p204
+S"<Storage {'expiration': 3600, 'user': <Storage {...1, 1, 14, 23, 2, 53, 273586), 'remember': False}>"
+p205
+sS'_formkey[login]'
+p206
+S"'c7b1330c-0359-4992-8731-ba4c7b68265c'"
+p207
+ssS'etype'
+p208
+S"<type 'exceptions.ValueError'>"
+p209
+sS'date'
+p210
+S'Fri Jan 14 23:02:53 2011'
+p211
+sS'response'
+p212
+(dp213
+S'status'
+p214
+S'200'
+p215
+sg59
+S'<cStringIO.StringO object>'
+p216
+sg76
+S"<SimpleCookie: session_id_marcado='127.0.0.1-d015cf56-dea1-48fb-a15a-d1c78550bc62'>"
+p217
+sS'_vars'
+p218
+S'None'
+p219
+sS'title'
+p220
+S"'Marcado!'"
+p221
+sS'session_file'
+p222
+S"<open file '/opt/web2py/applications/marcado/ses...015cf56-dea1-48fb-a15a-d1c78550bc62', mode 'rb+'>"
+p223
+sS'flash'
+p224
+S"''"
+p225
+sS'_custom_rollback'
+p226
+S'None'
+p227
+sS'session_id'
+p228
+S"'127.0.0.1-d015cf56-dea1-48fb-a15a-d1c78550bc62'"
+p229
+sS'headers'
+p230
+S"<Storage {'Expires': 'Sat, 15 Jan 2011 01:02:53 ...he, must-revalidate, post-check=0, pre-check=0'}>"
+p231
+sS'meta'
+p232
+S"<Storage {'keywords': 'web2py, python, framework...Enterprise Framework', 'author': 'Gilson Filho'}>"
+p233
+sS'session_filename'
+p234
+S"'/opt/web2py/applications/marcado/sessions/127.0.0.1-d015cf56-dea1-48fb-a15a-d1c78550bc62'"
+p235
+sS'postprocessing'
+p236
+S'[]'
+p237
+sS'menu'
+p238
+S"[(<lazyT 'Home'>, False, <gluon.html.XML object>, []), (<lazyT 'This App'>, False, <gluon.html.XML object>, [(<lazyT 'Controller'>, False, <gluon.html.XML object>), (<lazyT 'View'>, False, <gluon.html.XML object>), (<lazyT 'Layout'>, False, <gluon.html.XML object>), (<lazyT 'Stylesheet'>, False, <gluon.html.XML object>), (<lazyT 'DB Model'>, False, <gluon.html.XML object>), (<lazyT 'Menu Model'>, False, <gluon.html.XML object>), (<lazyT 'Database'>, False, <gluon.html.XML object>), (<lazyT 'Errors'>, False, <gluon.html.XML object>), (<lazyT 'About'>, False, <gluon.html.XML object>)]), (<lazyT 'Resources'>, False, None, [(<lazyT 'Documentation'>, False, 'http://www.web2py.com/book', [(<lazyT 'Preface'>, False, 'http://www.web2py.com/book/default/chapter/00'), (<lazyT 'Introduction'>, False, 'http://www.web2py.com/book/default/chapter/01'), (<lazyT 'Python'>, False, 'http://www.web2py.com/book/default/chapter/02'), (<lazyT 'Overview'>, False, 'http://www.web2py.com/book/default/chapter/03'), (<lazyT 'The Core'>, False, 'http://www.web2py.com/book/default/chapter/04'), (<lazyT 'The Views'>, False, 'http://www.web2py.com/book/default/chapter/05'), (<lazyT 'Database'>, False, 'http://www.web2py.com/book/default/chapter/06'), (<lazyT 'Forms and Validators'>, False, 'http://www.web2py.com/book/default/chapter/07'), (<lazyT 'Access Control'>, False, 'http://www.web2py.com/book/default/chapter/08'), (<lazyT 'Services'>, False, 'http://www.web2py.com/book/default/chapter/09'), (<lazyT 'Ajax Recipes'>, False, 'http://www.web2py.com/book/default/chapter/10'), (<lazyT 'Deployment Recipes'>, False, 'http://www.web2py.com/book/default/chapter/11'), (<lazyT 'Other Recipes'>, False, 'http://www.web2py.com/book/default/chapter/12'), (<lazyT 'Buy this book'>, False, 'http://stores.lulu.com/web2py')]), (<lazyT 'Community'>, False, None, [(<lazyT 'Groups'>, False, 'http://www.web2py.com/examples/default/usergroups'), (<lazyT 'Twitter'>, False, 'http://twitter.com/web2py'), (<lazyT 'Live chat'>, False, 'http://mibbit.com/?channel=%23web2py&server=irc.mibbit.net'), (<lazyT 'User Voice'>, False, 'http://web2py.uservoice.com/')]), (<lazyT 'Web2py'>, False, 'http://www.web2py.com', [(<lazyT 'Download'>, False, 'http://www.web2py.com/examples/default/download'), (<lazyT 'Support'>, False, 'http://www.web2py.com/examples/default/support'), (<lazyT 'Quick Examples'>, False, 'http://web2py.com/examples/default/examples'), (<lazyT 'FAQ'>, False, 'http://web2py.com/AlterEgo'), (<lazyT 'Free Applications'>, False, 'http://web2py.com/appliances'), (<lazyT 'Plugins'>, False, 'http://web2py.com/plugins'), (<lazyT 'Recipes'>, False, 'http://web2pyslices.com/'), (<lazyT 'Demo'>, False, 'http://web2py.com/demo_admin'), (<lazyT 'Semantic'>, False, 'http://web2py.com/semantic'), (<lazyT 'Layouts'>, False, 'http://web2py.com/layouts'), (<lazyT 'Videos'>, False, 'http://www.web2py.com/examples/default/videos/')])])]"
+p239
+sS'_view_environment'
+p240
+S"{'A': <class 'gluon.html.A'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'CENTER': <class 'gluon.html.CENTER'>, 'CLEANUP': <class 'gluon.validators.CLEANUP'>, 'CODE': <class 'gluon.html.CODE'>, 'CRYPT': <class 'gluon.validators.CRYPT'>, ...}"
+p241
+sS'session_id_name'
+p242
+S"'session_id_marcado'"
+p243
+sS'_custom_commit'
+p244
+S'None'
+p245
+sS'_caller'
+p246
+S'<function <lambda>>'
+p247
+sS'files'
+p248
+S'[]'
+p249
+sS'view'
+p250
+S"'clientes/show.html'"
+p251
+ssS'locals'
+p252
+(dp253
+S'id'
+p254
+S"'cliente'"
+p255
+sssS'traceback'
+p256
+S'Traceback (most recent call last):\n  File "/opt/web2py/gluon/restricted.py", line 188, in restricted\n    exec ccode in environment\n  File "/opt/web2py/applications/marcado/controllers/clientes.py", line 136, in <module>\n  File "/opt/web2py/gluon/globals.py", line 95, in <lambda>\n    self._caller = lambda f: f()\n  File "/opt/web2py/gluon/tools.py", line 2297, in f\n    return action(*a, **b)\n  File "/opt/web2py/applications/marcado/controllers/clientes.py", line 70, in show\n    query = db.cliente.id == int(id)\nValueError: invalid literal for int() with base 10: \'cliente\'\n'
+p257
+s.
