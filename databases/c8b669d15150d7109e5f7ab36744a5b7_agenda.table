@@ -1,0 +1,30 @@
+(dp1
+S'hora'
+p2
+S'TIME NOT NULL'
+p3
+sS'tipo_servico'
+p4
+S'INTEGER REFERENCES servicos(id) ON DELETE CASCADE'
+p5
+sS'observacoes'
+p6
+S'TEXT'
+p7
+sS'cliente'
+p8
+S'INTEGER REFERENCES cliente(id) ON DELETE CASCADE'
+p9
+sS'funcionario'
+p10
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p11
+sS'data'
+p12
+S'DATE NOT NULL'
+p13
+sS'id'
+p14
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p15
+s.

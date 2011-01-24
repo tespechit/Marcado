@@ -1,0 +1,26 @@
+(dp1
+S'nome'
+p2
+S'CHAR(512) NOT NULL UNIQUE'
+p3
+sS'id'
+p4
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p5
+sS'telefone'
+p6
+S'CHAR(512) NOT NULL'
+p7
+sS'endereco'
+p8
+S'CHAR(512) NOT NULL'
+p9
+sS'aniversario'
+p10
+S'DATE NOT NULL'
+p11
+sS'email'
+p12
+S'CHAR(512) NOT NULL'
+p13
+s.

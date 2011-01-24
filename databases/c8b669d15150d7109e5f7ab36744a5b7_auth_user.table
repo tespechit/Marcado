@@ -1,0 +1,46 @@
+(dp1
+S'username'
+p2
+S'CHAR(128) UNIQUE'
+p3
+sS'registration_id'
+p4
+S'CHAR(512)'
+p5
+sS'registration_key'
+p6
+S'CHAR(512)'
+p7
+sS'name'
+p8
+S'CHAR(128)'
+p9
+sS'id'
+p10
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p11
+sS'reset_password_key'
+p12
+S'CHAR(512)'
+p13
+sS'telefone'
+p14
+S'CHAR(512) NOT NULL'
+p15
+sS'endereco'
+p16
+S'CHAR(512) NOT NULL'
+p17
+sS'aniversario'
+p18
+S'DATE NOT NULL'
+p19
+sS'password'
+p20
+S'CHAR(512)'
+p21
+sS'email'
+p22
+S'CHAR(128)'
+p23
+s.
