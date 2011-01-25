@@ -1,3 +1,6 @@
 # Ignorando os arquivos do Mercurial
 .hg
 .hgignore
+
+# Arquivos compilados
+*.[pyc]
