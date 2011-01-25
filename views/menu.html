@@ -1,0 +1,33 @@
+<ul class="subNav">
+    <!-- {{=MENU(response.menu,_class='sf-menu')}} -->
+    <li class="current_page_item">
+      <a href="{{=URL('agenda','index')}}" class="button">
+        <span class="link_menu menu_agenda">Agenda</span>
+      </a>
+    </li>
+    <li>
+        <a href="{{=URL('agenda', 'novo')}}" class="button">
+            <span class="link_menu menu_horario">Horários</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{=URL('clientes','index')}}" class="button">
+            <span class="link_menu menu_clientes">Clientes</span>
+        </a>                    
+    </li>
+    <li>
+        <a href="{{=URL('servicos', 'index')}}" class="button">
+            <span class="link_menu menu_pedidos">Serviços</span>
+        </a>                    
+    </li>
+    <li>
+        <a href="{{=URL('funcionarios', 'index')}}" class="button">
+            <span class="link_menu menu_perfil">Funcionários</span>
+        </a>                    
+    </li>  
+    <li>
+        <a href="{{=URL('default', 'user', args = 'logout')}}" class="button">
+            <span class="link_menu menu_sair">Sair</span>
+        </a>                    
+    </li>                
+</ul>
