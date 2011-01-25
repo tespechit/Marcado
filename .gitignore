@@ -1,0 +1,3 @@
+# Ignorando os arquivos do Mercurial
+.hg
+.hgignore
