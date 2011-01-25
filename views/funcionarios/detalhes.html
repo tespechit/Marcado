@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+
+<div class="titulo_registro">
+    <h2>{{=funcionario.name}}</h2>    
+</div>
+<div class="detalhes">
+    <span class="item">Login de Acesso: </span>
+    <span class="dados">{{=funcionario.username}}</span><br />
+    
+    <span class="item">Endereço: </span>
+    <span class="dados">{{=funcionario.endereco}}</span><br />
+    
+    <span class="item">Telefone: </span>
+    <span class="dados">{{=funcionario.telefone}}</span><br />   
+    
+    <span class="item">E-mail: </span>
+    <span class="dados">{{=funcionario.email}}</span><br />     
+    
+    <span class="item">Aniversário: </span>
+    <span class="dados">{{=funcionario.aniversario.strftime("%d/%m/%Y")}}</span><br />    
+</div>
+<br />
+<div class="navegacao">
+    <center>
+        <a href="{{=URL(request.application, 'funcionarios','editar', args = funcionario.id)}}">Editar dados</a>
+        <a href="{{=URL(request.application, 'funcionarios','excluir', args = funcionario.id)}}">Excluir</a>  
+        <a href="{{=URL(request.application, 'funcionarios', 'index')}}">Voltar</a>  
+    </center>
+</div>

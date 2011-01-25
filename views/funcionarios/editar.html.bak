@@ -1,0 +1,5 @@
+{{extend 'layout.html'}}
+<h2>Editando Funcionário</h2>
+{{=form}}
+<br />
+<a href="{{=URL(request.application, 'funcionarios', 'index')}}">Voltar</a>

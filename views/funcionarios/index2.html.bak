@@ -1,0 +1,3 @@
+{{extend 'layout.html'}}
+<h2>Lista de Funcionarios</h2>
+{{=grud}}
