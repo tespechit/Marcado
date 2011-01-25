@@ -1,0 +1,166 @@
+fieldset {
+    border: 1px solid #CCC;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 140%;
+}
+
+label {
+    font-size: 140%;
+}
+
+input {
+    font-size: 180%;
+    margin-bottom: 20px;
+}
+
+select {
+    width: 100%;
+    font-size: 160%;
+    margin-bottom: 20px;
+}
+
+select:focus {
+    background-color: #C9DE55;
+}
+
+input[type="text"] {
+    border: 1px solid #C3C3C3;
+    width: 150%;
+}
+
+input.date {
+    width: 60%;
+}
+
+input.pesquisa {
+    width: 60%;
+}
+
+input[type="text"]:focus {
+    background-color: #C9DE55;
+}
+
+/* Campos dos formularios */
+td.w2p_fl{
+    margin: 0;
+    padding: 0;
+
+}
+
+td.w2p_fw {
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+td.w2p_fc {
+    margin: 0;
+    padding-bottom: 0;
+}
+
+.password {
+    border: 1px solid #C3C3C3;
+}
+
+.password:focus {
+    background-color: #C9DE55;
+}
+
+/* Tabelas nos modulos de cadastro */
+.lista {
+    width: 100%;
+    height: auto;
+}
+
+.lista tr {
+    text-align: center;    
+}
+
+.lista th {
+    border: 1px solid #CCC;
+    background-color: #ACEBAE;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.lista td {
+    border: 1px solid #CCC;
+    font-size: 100%;
+}
+
+/* ERRORS */
+.error {
+    background-color: red;
+    color: white;
+    padding: 3px;
+}
+
+/* LINKS PARA NAVEGACAO */
+
+div.navegacao {
+    display: inline; 
+    width: 100%;
+}
+
+div.navegacao a {
+    padding: 2px 10px;
+    font-size: 120%;
+    color: #7D9100;
+    font-weight: bold;
+}
+
+.navegacao a:hover {
+    background-color: #7D9100;
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+
+/* EXIBICAO DE REGISTROS */
+
+.titulo_registro {
+    background-color: #7D9100;
+    color: #FFFFFF;
+    padding: 10px 0 0 0;
+    margin-bottom: 10px;
+    padding-left: 1%;
+    border: 1px solid #CCC;    
+    
+    /* Para Webkit (Google Chrome, Safari, etc) */
+    -webkit-border-radius: 6px;
+    
+    /* Para Mozilla/Gecko (Firefox, etc) */
+    -moz-border-radius: 6px;
+    
+    border-radius: 6px;
+}
+
+.detalhes {
+    background-color: #ACEBAE;
+    width: 100%;
+    height: auto;
+    border: 1px solid #CCC;
+    line-height: 0.8cm;
+    
+    /* Para Webkit (Google Chrome, Safari, etc) */
+    -webkit-border-radius: 6px;
+    
+    /* Para Mozilla/Gecko (Firefox, etc) */
+    -moz-border-radius: 6px;
+    
+    border-radius: 6px;    
+}
+
+.detalhes .item {
+    font-weight: bold;
+    font-size: 120%;
+    padding-left: 1%;
+}
+
+.detalhes .dados {
+    font-size: 110%;
+    padding-left: 1%;
+    
+}

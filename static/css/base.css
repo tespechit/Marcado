@@ -1,0 +1,369 @@
+@charset "UTF-8";
+
+    /* CORE STYLES */
+body{
+    background: #FFFFFF;
+    margin: 0px auto;
+    padding: 0px;
+    color: #354242;
+    font: 13px "Verdana";
+}   
+@font-face {
+    font-family: 'Qlassik Bold';
+    src: url(qlassik_tb_d7b9.otf);
+}
+
+p {
+    font-family: 'Qlassik Bold';
+    color: #354242;
+    font-size: 15px;
+    margin: 0 0 10px 0;
+}
+    
+a {
+    text-decoration: none;
+}
+
+.button {
+    background: #3e779d;
+    /* Para Webkit (Google Chrome, Safari, etc) */
+    background: -webkit-gradient(linear, left top, left bottom, from(#C9DE55), to(#7D9100));
+    
+    /* Para Mozilla/Gecko (Firefox, etc) */
+    background: -moz-linear-gradient(top, #C9DE55, #7D9100);
+    
+    /* Para IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#C9DE55, endColorstr=#7D9100)";
+    
+    /* Para IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#C9DE55, endColorstr=#7D9100);
+    
+    padding: 8.5px 17px;
+    
+    /* Para Webkit (Google Chrome, Safari, etc) */
+    -webkit-border-radius: 6px;
+    
+    /* Para Mozilla/Gecko (Firefox, etc) */
+    -moz-border-radius: 6px;
+    
+    border-radius: 6px;
+    
+    /* Para Webkit (Google Chrome, Safari, etc) */
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 2px;
+    
+    /* Para Mozilla/Gecko (Firefox, etc) */
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 1px;
+    box-shadow: rgba(0,0,0,1) 1px 1px 1px;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 120%;
+    font-family: 'Qlassik Bold';
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.button:hover {
+    border-top-color: #28597a;
+    background: #65a9d7;
+    background: -webkit-gradient(linear, left top, left bottom, from(#7D9100), to(#C9DE55));
+    background: -moz-linear-gradient(top, #7D9100, #C9DE55);
+    text-shadow: 0;
+    color: #354242;
+    text-decoration: none;
+}
+
+.button:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+    text-decoration: none;
+}
+
+img{
+    vertical-align:middle;
+    border: 0px;
+}
+    
+#wrapper, .headWrap {
+    width: 990px;
+    margin: 0px auto;
+}
+    
+#mainArea, #likeContent {
+    width: 990px;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}   
+
+#username {
+    clear: both;
+    float: right;
+    margin-left: 40px;
+}
+
+#content {
+    width: 659px;
+    padding-right: 38px;
+    float: left;
+    border-right: 1px dotted #cccccc;
+    margin-top: 20px;
+    min-height: 300px;
+}
+    
+/* NOTES */
+#note-container h4 {
+    font-size: 1.3em;
+    line-height: 1.15;
+    margin-bottom: 1.15em;
+}
+
+#note-container .notes .note {
+    border-bottom: 1px solid #eee;
+    margin: 0 0 0.75em;
+    padding: 0 0 0.75em
+}
+
+#note-container .notes .avatar {
+    display: none;
+}
+    
+/* SEARCH */
+#search{
+    background: #FFFFFF;
+    border:1px solid #526f9f;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px
+} 
+
+#search-scope{
+    padding-top:5px;
+    font-size:11px;
+    text-align:center
+} 
+
+#search-scope input, #search-scope label{
+    cursor:pointer
+}
+
+#search form{
+    margin:0
+}
+
+#search form .query{
+    padding:4px;
+    padding-top:8px; 
+    border:none;
+    background:transparent;
+    outline:none;
+    width:105px;
+    float:left;
+    color: #3b5b7e;
+}
+
+#search form .submit{
+    background:#526f9f;
+    color: #FFFFFF;
+    border:none;
+    padding:5px 7px;
+    margin:3px 3px 3px 0;
+    float:right;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    cursor:pointer
+}
+
+#search form .submit:hover{
+    opacity:0.9;
+    filter:alpha(opacity=90);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)"
+}   
+    
+/* HEADER */
+#headBlock{
+    border-top:6px solid #ACEBAE;
+    text-align:center;
+    margin:0px auto;
+}
+
+.headTitle{
+    padding:5px;
+    margin:5px;
+    text-align:left;
+}
+
+.headTitle a{
+    color: #354242;
+    font-size:45px;
+    font-weight: bold;
+    text-shadow: 1px 2px 2px #CCC;
+}
+
+.headTitle a:hover{
+    color:#555555;
+}
+
+.headFooter{
+    height:12px;
+    max-height:12px;
+    border-top:1px solid #dddddd;
+    border-bottom:1px solid #dddddd;
+    background: #f2f2f2;
+}
+
+.headMenus {
+    text-align:left;
+    display:block;
+    height:28px;
+    max-height:28px;
+}   
+
+ul.mainNav {
+    list-style: none;
+}
+
+ul.mainNav {
+    float: right;
+    margin-top: 0.5px;
+}
+
+ul.mainNav li {
+    float: left;
+    padding: 0px;
+}
+
+li.usuario {
+    font-size: 13px;
+}
+
+ul.mainNav a:hover, ul.mainNav a:active {
+    color: #0a86f2;
+}
+
+ul.mainNav li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #555555;
+    font-size: 10px;
+    padding: 4px 8px;
+}
+
+sul.mainNav li.current_page_item a {
+    color: #0a86f2;
+}
+
+ul.subNav {
+    list-style: none;
+    display: block;
+}
+
+ul.subNav li {
+    float: left;
+    padding: 0 5px;
+    margin: 0px;
+}
+
+ul.subNav li a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 4px 8px;
+}
+
+.link_menu {
+    padding: 5px;
+    padding-left: 16px;
+}
+
+.menu_agenda {
+    padding-left: 20px;
+    background: url("../images/agenda.png") no-repeat left;
+    width: 16px;
+    height: 16px;
+}
+
+.menu_horario {
+    padding-left: 20px;
+    background: url("../images/marcar_horario.png") no-repeat left;
+    width: 16px;
+    height: 16px;
+}
+
+.menu_clientes {
+    padding-left: 20px;
+    background: url("../images/clientes.png") no-repeat left;
+    width: 16px;
+    height: 16px;
+}
+
+.menu_pedidos {
+    padding-left: 20px;
+    background: url("../images/pedidos.png") no-repeat left;
+    width: 16px;
+    height: 16px;
+}
+
+.menu_perfil {
+    padding-left: 20px;
+    background: url("../images/perfil.png") no-repeat left;
+    width: 16px;
+    height: 16px;
+}
+
+.menu_alterar_senha {
+    padding-left: 20px;
+    background: url("../images/alterar_senha.png") no-repeat left;
+    width: 16px;
+    height: 16px;
+}
+
+.menu_sair {
+    padding-left: 20px;
+    background: url("../images/sair.png") no-repeat left;
+    width: 16px;
+    height: 16px;
+}
+
+/* FOOTER */
+
+.pageFooter {
+    border-top:1px solid #dddddd;
+    border-bottom:1px solid #dddddd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#C9DE55), to(#7D9100)); 
+    background: -moz-linear-gradient(top, #C9DE55, #7D9100);
+    color: #FFFFFF;
+    clear: both;
+    height: 30px;
+    padding: 20px;
+}   
+
+.footerContents {
+    width:960px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+/* OTHER */
+.curvedCorner {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.clear{
+    clear:both;
+    height:0px;
+    overflow:hidden;
+}   
+
+.right {
+    float: right;
+}
+
+.ui-widget p{
+    margin-top: 20px;
+    font-size: 120%;
+}
+
+/*--[ CUSTOM CSS ]----------------*/

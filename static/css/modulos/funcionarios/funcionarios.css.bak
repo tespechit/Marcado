@@ -1,0 +1,25 @@
+#auth_user_name {
+    width: 200%;
+}
+
+#auth_user_username {
+    width: 100%;
+}
+
+#auth_user_password {
+    width: 70%;
+}
+
+#auth_user_endereco {
+    width: 220%
+}
+
+#auth_user_telefone {
+    width: 70%;
+}
+
+/* Formulario de Pesquisa */
+.pesquisa label {
+    font-size: 120%;
+    font-weight: bolf;
+}

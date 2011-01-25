@@ -1,0 +1,8 @@
+#servicos_preco {
+    width: 60%;
+}
+
+#servicos_observacoes {
+    width: 80%;
+    height: 40%;
+}

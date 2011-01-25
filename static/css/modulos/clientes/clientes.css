@@ -1,0 +1,12 @@
+/* Estilizando o formulario de clientes */
+#cliente_nome {
+    width: 200%;
+}
+
+#cliente_endereco {
+    width: 220%;
+}
+
+#cliente_telefone {
+    width: 70%;
+}
