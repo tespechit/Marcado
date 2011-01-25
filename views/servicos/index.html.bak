@@ -1,0 +1,41 @@
+{{extend 'layout.html'}}
+{{ if servicos: }}
+    <h2>Lista de Serviços Cadastrados</h2>
+    
+    <!-- Formulario de pesquisa -->
+<!--    <fieldset>
+        <legend>Pesquisa</legend>
+        <form action="{{=URL('pesquisa')}}" method="post">
+            <label for="nome">Pesquisar pelo Serviço: </label>
+            <input type="text" name="nome" id="nome" class="pesquisa" />
+            <input type="submit" value="{{=T('Submit')}}" />
+        </form>
+    </fieldset>
+    <br /> -->
+    <!-- Lista de servicos -->
+<!--    <table class="lista">
+        <tr>
+            <th>Editar</th>
+            <th>Excluir</th>
+            <th>Serviço</th>
+            <th>Valor do Serviço</th>
+        </tr>
+        {{ for servico in servicos: }}
+            <tr>
+                <td><a href="{{=URL(request.application, 'servicos','editar', args = servico.id)}}">Editar</a></td>
+                <td><a href="{{=URL(request.application, 'servicos','excluir', args = servico.id)}}">Excluir</a></td>
+                <td><a href="{{=URL(request.application, 'servicos','detalhes', args = servico.id)}}">{{=servico.servico}}</a></td>
+                <td>{{=servico.preco}}</td>
+            </tr>
+        {{pass}}
+    </table>-->
+    {{=table}}
+{{ else: }}
+    <center>
+        <h3>{{=mensagem}}</h3>
+    </center>
+{{pass}}
+<br />
+<div class="navegacao">
+    <center><a href="{{=URL(request.application, 'servicos','novo')}}">Novo {{=T('servico')}}</a></center>
+</div>

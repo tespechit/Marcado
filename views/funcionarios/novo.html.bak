@@ -1,4 +1,0 @@
-{{extend 'layout.html'}}
-
-<h2>Novo Funcionário</h2>
-{{=form}}
