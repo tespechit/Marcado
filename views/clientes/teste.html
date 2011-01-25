@@ -1,0 +1,9 @@
+{{ extend 'layout.html' }}
+<script type="javascript">
+  jQuery.getJSON("{{=URL(request.application,'call','teste',args=['json','teste'])}}",
+      function(msg) {
+        jQuery.each(msg, function(){ jQuery("#target").append(this + "<br />");})
+      }
+  );
+</script>
+<div id="target"></div>

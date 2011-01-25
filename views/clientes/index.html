@@ -1,0 +1,13 @@
+{{extend 'layout.html'}}
+{{ if clientes: }}
+    <h2>Lista de Clientes Cadastrados</h2>
+    {{=table}}
+{{ else: }}
+    <center>
+        <h3>{{=mensagem}}</h3>
+    </center>
+{{ pass}}
+<br />
+<div class="navegacao">
+    <center><a href="{{=URL(request.application, 'clientes','novo')}}">Novo Cliente</a></center>
+</div>
