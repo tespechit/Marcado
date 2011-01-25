@@ -3,4 +3,4 @@
 .hgignore
 
 # Arquivos compilados
-*.[pyc]
+__init__.pyc
