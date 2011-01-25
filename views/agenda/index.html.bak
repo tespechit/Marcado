@@ -1,0 +1,23 @@
+{{extend 'layout.html'}}
+{{ from gluon.serializers import json }}
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        //Inserindo o calendario
+        jQuery("#calendar").fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'agendaDay,agendaWeek',
+            },
+            editable: true,
+            events: [
+                {
+                    title: 'Teste',
+                    start: '2011-01-27'
+                }
+            ]
+        });
+    });
+</script>
+<h2>Agenda do Usuário: {{=session.auth.user.username}}</h2>
+<div id="calendar"></div>
