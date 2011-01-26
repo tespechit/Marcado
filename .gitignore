@@ -3,4 +3,7 @@
 .hgignore
 
 # Arquivos compilados
-__init__.pyc
+*.pyc
+
+# Ignorando pasta sessions, pelo motivo de ser somente cache da aplicacao
+sessions/**/*
