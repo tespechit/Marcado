@@ -366,4 +366,8 @@ ul.subNav li a {
     font-size: 120%;
 }
 
+.dataTables_wrapper input select {
+  width: 80%;
+}
+
 /*--[ CUSTOM CSS ]----------------*/
