@@ -2,18 +2,21 @@
 
 def index():
     # Consultando os servicos do usuario logado
-    query = db.agenda.id > 0 and db.agenda.funcionario == session.auth.user.id and db.agenda.cliente == db.cliente.id
-    agenda = db(query).select(orderby = db.agenda.data)
-    teste = []
-    
-    for ag in agenda:
-        result = dict()
-        result["id"] = ag.agenda.id
-        result["title"] = ag.cliente.nome
-        result["start"] = ag.agenda.data.strftime('%Y-%m-%d')
-        teste.append(result);
-    print teste
-    return dict(teste = teste)
+    # query = (db.agenda.funcionario == session.auth.user.id) & ()
+    query = db.agenda.funcionario == int(session.auth.user.id)
+    agenda = db(query).select()
 
+    # Retorna a lista de horarios
+    return dict(horarios = agenda)
+
+@auth.requires_login()
 def novo():
     return dict(form = crud.create(db.agenda))
+
+@auth.requires_login()
+def atualizar():
+    # Recupera o primeiro argumento, ou redireciona
+    id = request.args(0) or redirect(URL('index'))
+
+    return dict(form = crud.update(db.agenda, id))
+
