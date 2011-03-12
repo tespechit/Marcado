@@ -4,18 +4,30 @@
     jQuery(document).ready(function(){
         //Inserindo o calendario
         jQuery("#calendar").fullCalendar({
+            //Cabeçalho do calendário
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay',
             },
+            //Texto em portugues dos botões que visualizacao de horarios
             buttonText: {
                 today: 'Hoje',
                 month: 'Mês',
                 week: 'Semana',
                 day: 'Hoje'
             },
-            events: {{ response.write(teste, escape = False) }}
+            editable: false,
+            events: [
+              {{ for horario in horarios: }}
+                {
+                  title: '{{=(horario.cliente.nome).replace("'","\\'")}}',
+                  allDay: false,
+                  start: '{{=horario.data.strftime("%Y-%m-%d")}} {{=horario.hora.strftime("%H:%M")}}',
+                  url: '{{=URL(request.application,"agenda","atualizar",args=[horario.id])}}'
+                },
+              {{ pass }}
+            ]
         });
         // Traducao do meses completo
         jQuery("#calendar").fullCalendar.monthNames(
@@ -41,5 +53,5 @@
         jQuery("#calendar").fullCalendar.dayAbbrevs(['Seg','Ter','Qua','Qui','Sex']);        
     });
 </script>
-<h2>Agenda do Usuário: {{=session.auth.user.username}}</h2>
+<h2>Agenda do Usuário: {{=session.auth.user.username.upper()}}</h2>
 <div id="calendar"></div>
